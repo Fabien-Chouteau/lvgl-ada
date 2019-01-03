@@ -2,113 +2,95 @@ pragma Style_Checks (Off);
 
 with Interfaces.C; use Interfaces.C;
 with Interfaces.C.Strings;
-with LV.Area;
+with Lv.Area;
 with Interfaces.C.Extensions;
-with LV.Style;
+with Lv.Style;
 
-package LV.Objx.Label is
+package Lv.Objx.Label is
 
    subtype Instance is Obj_T;
 
-   LV_LABEL_DOT_NUM : constant := 3;  --  lv_label.h:32
-   LV_LABEL_POS_LAST : constant := 16#FFFF#;  --  lv_label.h:33
+   Lv_Label_Dot_Num  : constant := 3;
+   Lv_Label_Pos_Last : constant := 16#FFFF#;
 
-   subtype lv_label_long_mode_t is uint8_t;  -- lv_label.h:49
+   subtype Lv_Label_Long_Mode_T is Uint8_T;
 
-   subtype lv_label_align_t is uint8_t;  -- lv_label.h:57
+   subtype Lv_Label_Align_T is Uint8_T;
 
-   function create (Par : Obj_T; Copy : Obj_T) return Instance;  -- lv_label.h:92
-   pragma Import (C, create, "lv_label_create");
+   function Create (Par : Obj_T; Copy : Obj_T) return Instance;
+   pragma Import (C, Create, "lv_label_create");
 
-   procedure set_text (Self : Instance; arg2 : Interfaces.C.Strings.chars_ptr);  -- lv_label.h:103
-   pragma Import (C, set_text, "lv_label_set_text");
+   procedure Set_Text (Self : Instance; Arg2 : Interfaces.C.Strings.chars_ptr);
+   pragma Import (C, Set_Text, "lv_label_set_text");
 
-   procedure set_array_text
+   procedure Set_Array_Text
      (Self : Instance;
-      arg2 : Interfaces.C.Strings.chars_ptr;
-      arg3 : uint16_t);  -- lv_label.h:112
-   pragma Import (C, set_array_text, "lv_label_set_array_text");
+      Arg2 : Interfaces.C.Strings.chars_ptr;
+      Arg3 : Uint16_T);
+   pragma Import (C, Set_Array_Text, "lv_label_set_array_text");
 
-   procedure set_static_text (Self : Instance; arg2 : Interfaces.C.Strings.chars_ptr);  -- lv_label.h:120
-   pragma Import (C, set_static_text, "lv_label_set_static_text");
-
-   procedure set_long_mode (Self : Instance; arg2 : lv_label_long_mode_t);  -- lv_label.h:128
-   pragma Import (C, set_long_mode, "lv_label_set_long_mode");
-
-   procedure set_align (Self : Instance; arg2 : lv_label_align_t);  -- lv_label.h:135
-   pragma Import (C, set_align, "lv_label_set_align");
-
-   procedure set_recolor (Self : Instance; arg2 : u_Bool);  -- lv_label.h:142
-   pragma Import (C, set_recolor, "lv_label_set_recolor");
-
-   procedure set_body_draw (Self : Instance; arg2 : u_Bool);  -- lv_label.h:149
-   pragma Import (C, set_body_draw, "lv_label_set_body_draw");
-
-   procedure set_anim_speed (Self : Instance; arg2 : uint16_t);  -- lv_label.h:156
-   pragma Import (C, set_anim_speed, "lv_label_set_anim_speed");
-
-   procedure set_style (Self : Instance; style : LV.Style.Style);  -- lv_label.h:163
-   pragma Import (C, set_style, "lv_label_set_style_inline");
-
-   function get_text (Self : Instance) return Interfaces.C.Strings.chars_ptr;  -- lv_label.h:176
-   pragma Import (C, get_text, "lv_label_get_text");
-
-   function get_long_mode (Self : Instance) return lv_label_long_mode_t;  -- lv_label.h:183
-   pragma Import (C, get_long_mode, "lv_label_get_long_mode");
-
-   function get_align (Self : Instance) return lv_label_align_t;  -- lv_label.h:190
-   pragma Import (C, get_align, "lv_label_get_align");
-
-   function get_recolor (Self : Instance) return u_Bool;  -- lv_label.h:197
-   pragma Import (C, get_recolor, "lv_label_get_recolor");
-
-   function get_body_draw (Self : Instance) return u_Bool;  -- lv_label.h:204
-   pragma Import (C, get_body_draw, "lv_label_get_body_draw");
-
-   function get_anim_speed (Self : Instance) return uint16_t;  -- lv_label.h:211
-   pragma Import (C, get_anim_speed, "lv_label_get_anim_speed");
-
-   procedure get_letter_pos
+   procedure Set_Static_Text
      (Self : Instance;
-      arg2 : uint16_t;
-      arg3 : access LV.Area.Point_T);  -- lv_label.h:219
-   pragma Import (C, get_letter_pos, "lv_label_get_letter_pos");
+      Arg2 : Interfaces.C.Strings.chars_ptr);
+   pragma Import (C, Set_Static_Text, "lv_label_set_static_text");
 
-   function get_letter_on (Self : Instance; arg2 : access LV.Area.Point_T) return uint16_t;  -- lv_label.h:228
-   pragma Import (C, get_letter_on, "lv_label_get_letter_on");
+   procedure Set_Long_Mode (Self : Instance; Arg2 : Lv_Label_Long_Mode_T);
+   pragma Import (C, Set_Long_Mode, "lv_label_set_long_mode");
 
-   function get_style (Self : Instance) return LV.Style.Style;  -- lv_label.h:235
-   pragma Import (C, get_style, "lv_label_get_style_inline");
+   procedure Set_Align (Self : Instance; Arg2 : Lv_Label_Align_T);
+   pragma Import (C, Set_Align, "lv_label_set_align");
 
-   procedure ins_text
+   procedure Set_Recolor (Self : Instance; Arg2 : U_Bool);
+   pragma Import (C, Set_Recolor, "lv_label_set_recolor");
+
+   procedure Set_Body_Draw (Self : Instance; Arg2 : U_Bool);
+   pragma Import (C, Set_Body_Draw, "lv_label_set_body_draw");
+
+   procedure Set_Anim_Speed (Self : Instance; Arg2 : Uint16_T);
+   pragma Import (C, Set_Anim_Speed, "lv_label_set_anim_speed");
+
+   procedure Set_Style (Self : Instance; Style : Lv.Style.Style);
+   pragma Import (C, Set_Style, "lv_label_set_style_inline");
+
+   function Get_Text (Self : Instance) return Interfaces.C.Strings.chars_ptr;
+   pragma Import (C, Get_Text, "lv_label_get_text");
+
+   function Get_Long_Mode (Self : Instance) return Lv_Label_Long_Mode_T;
+   pragma Import (C, Get_Long_Mode, "lv_label_get_long_mode");
+
+   function Get_Align (Self : Instance) return Lv_Label_Align_T;
+   pragma Import (C, Get_Align, "lv_label_get_align");
+
+   function Get_Recolor (Self : Instance) return U_Bool;
+   pragma Import (C, Get_Recolor, "lv_label_get_recolor");
+
+   function Get_Body_Draw (Self : Instance) return U_Bool;
+   pragma Import (C, Get_Body_Draw, "lv_label_get_body_draw");
+
+   function Get_Anim_Speed (Self : Instance) return Uint16_T;
+   pragma Import (C, Get_Anim_Speed, "lv_label_get_anim_speed");
+
+   procedure Get_Letter_Pos
      (Self : Instance;
-      arg2 : uint32_t;
-      arg3 : Interfaces.C.Strings.chars_ptr);  -- lv_label.h:252
-   pragma Import (C, ins_text, "lv_label_ins_text");
+      Arg2 : Uint16_T;
+      Arg3 : access Lv.Area.Point_T);
+   pragma Import (C, Get_Letter_Pos, "lv_label_get_letter_pos");
 
-   procedure cut_text
+   function Get_Letter_On
      (Self : Instance;
-      arg2 : uint32_t;
-      arg3 : uint32_t);  -- lv_label.h:261
-   pragma Import (C, cut_text, "lv_label_cut_text");
+      Arg2 : access Lv.Area.Point_T) return Uint16_T;
+   pragma Import (C, Get_Letter_On, "lv_label_get_letter_on");
 
---  private
---
---     subtype lv_label_ext_t_dot_tmp_array is Interfaces.C.char_array (0 .. 12);
---     type lv_label_ext_t is record
---        text : Interfaces.C.Strings.chars_ptr;  -- lv_label.h:64
---        long_mode : aliased long_mode_t;  -- lv_label.h:65
---        dot_tmp : aliased lv_label_ext_t_dot_tmp_array;  -- lv_label.h:69
---        dot_end : aliased uint16_t;  -- lv_label.h:71
---        anim_speed : aliased sys_ustdint_h.uint16_t;  -- lv_label.h:72
---        offset : aliased LV.Area.Point_T;  -- lv_label.h:73
---        static_txt : Extensions.Unsigned_1;  -- lv_label.h:74
---        align : Extensions.Unsigned_2;  -- lv_label.h:75
---        recolor : Extensions.Unsigned_1;  -- lv_label.h:76
---        expand : Extensions.Unsigned_1;  -- lv_label.h:77
---        body_draw : Extensions.Unsigned_1;  -- lv_label.h:78
---     end record;
---     pragma Convention (C_Pass_By_Copy, lv_label_ext_t);
---     pragma Pack (lv_label_ext_t);  -- lv_label.h:79
+   function Get_Style (Self : Instance) return Lv.Style.Style;
+   pragma Import (C, Get_Style, "lv_label_get_style_inline");
 
-end LV.Objx.Label;
+   procedure Ins_Text
+     (Self : Instance;
+      Arg2 : Uint32_T;
+      Arg3 : Interfaces.C.Strings.chars_ptr);
+   pragma Import (C, Ins_Text, "lv_label_ins_text");
+
+   procedure Cut_Text (Self : Instance; Arg2 : Uint32_T; Arg3 : Uint32_T);
+   pragma Import (C, Cut_Text, "lv_label_cut_text");
+
+end Lv.Objx.Label;

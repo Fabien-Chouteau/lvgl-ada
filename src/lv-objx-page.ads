@@ -1,161 +1,128 @@
 pragma Style_Checks (Off);
 
 with Interfaces.C; use Interfaces.C;
-with LV.Style;
-with LV.Area;
+with Lv.Style;
+with Lv.Area;
 with Interfaces.C.Extensions;
 
-with LV.Objx.Cont;
+with Lv.Objx.Cont;
 
-package LV.Objx.Page is
+package Lv.Objx.Page is
 
    subtype Instance is Obj_T;
 
    --  Scrollbar modes: shows when should the scrollbars be visible
-   type lv_sb_mode_t is
-   (SB_MODE_OFF,   --  Never show scrollbars
-    SB_MODE_ON,    --  Always show scrollbars
-    SB_MODE_DRAG,  --  Show scrollbars when page is being dragged
-    SB_MODE_AUTO,  --  Show scrollbars when the scrollable container is large enough to be scrolled
-    SB_MODE_HIDE,  --  Hide the scroll bar temporally
-    SB_MODE_UNHIDE --  Unhide the previously hidden scrollbar. Recover it's type too
-   );
-   --  subtype lv_sb_mode_t is sys_ustdint_h.uint8_t;  -- lv_page.h:50
+   type Lv_Sb_Mode_T is
+     (Sb_Mode_Off,   --  Never show scrollbars
+      Sb_Mode_On,    --  Always show scrollbars
+      Sb_Mode_Drag,  --  Show scrollbars when page is being dragged
+      Sb_Mode_Auto,  --  Show scrollbars when the scrollable container is large enough to be scrolled
+      Sb_Mode_Hide,  --  Hide the scroll bar temporally
+      Sb_Mode_Unhide --  Unhide the previously hidden scrollbar. Recover it's type too
+      );
 
-   for lv_sb_mode_t use
-   (SB_MODE_OFF    => 0,
-    SB_MODE_ON     => 1,
-    SB_MODE_DRAG   => 2,
-    SB_MODE_AUTO   => 3,
-    SB_MODE_HIDE   => 4,
-    SB_MODE_UNHIDE => 5);
+   for Lv_Sb_Mode_T use
+     (Sb_Mode_Off    => 0,
+      Sb_Mode_On     => 1,
+      Sb_Mode_Drag   => 2,
+      Sb_Mode_Auto   => 3,
+      Sb_Mode_Hide   => 4,
+      Sb_Mode_Unhide => 5);
 
-   type lv_page_style_t is
-   (STYLE_BG,
-    STYLE_SCRL,
-    STYLE_SB)
-   with Size => 8;
-   --  subtype lv_page_style_t is sys_ustdint_h.uint8_t;  -- lv_page.h:76
+   type Lv_Page_Style_T is (Style_Bg, Style_Scrl, Style_Sb) with
+        Size => 8;
 
-   for lv_page_style_t use
-   (STYLE_BG => 0,
-    STYLE_SCRL => 1,
-    STYLE_SB => 2);
+   for Lv_Page_Style_T use (Style_Bg => 0, Style_Scrl => 1, Style_Sb => 2);
 
-   function Create (Par : Obj_T; Copy : Obj_T) return Instance;  -- lv_page.h:88
+   function Create (Par : Obj_T; Copy : Obj_T) return Instance;
    pragma Import (C, Create, "lv_page_create");
 
-   procedure Clean (Self : Instance);  -- lv_page.h:94
+   procedure Clean (Self : Instance);
    pragma Import (C, Clean, "lv_page_clean");
 
-   function Get_Pr_Action (Self : Instance) return lv_action_t;  -- lv_page.h:101
+   function Get_Pr_Action (Self : Instance) return Lv_Action_T;
    pragma Import (C, Get_Pr_Action, "lv_page_get_pr_action");
 
-   function Get_Rel_Action (Self : Instance) return lv_action_t;  -- lv_page.h:108
+   function Get_Rel_Action (Self : Instance) return Lv_Action_T;
    pragma Import (C, Get_Rel_Action, "lv_page_get_rel_action");
 
-   function Get_Scrl (arg1 : Instance) return Obj_T;  -- lv_page.h:115
+   function Get_Scrl (Arg1 : Instance) return Obj_T;
    pragma Import (C, Get_Scrl, "lv_page_get_scrl");
 
-   procedure Set_Rel_Action (Self : Instance; Rel_Action : lv_action_t);  -- lv_page.h:126
+   procedure Set_Rel_Action (Self : Instance; Rel_Action : Lv_Action_T);
    pragma Import (C, Set_Rel_Action, "lv_page_set_rel_action");
 
-   procedure set_pr_action (Self : Instance; PR_Action : lv_action_t);  -- lv_page.h:133
-   pragma Import (C, set_pr_action, "lv_page_set_pr_action");
+   procedure Set_Pr_Action (Self : Instance; Pr_Action : Lv_Action_T);
+   pragma Import (C, Set_Pr_Action, "lv_page_set_pr_action");
 
-   procedure set_sb_mode (Self : Instance; Sb_Mode : lv_sb_mode_t);  -- lv_page.h:140
-   pragma Import (C, set_sb_mode, "lv_page_set_sb_mode");
+   procedure Set_Sb_Mode (Self : Instance; Sb_Mode : Lv_Sb_Mode_T);
+   pragma Import (C, Set_Sb_Mode, "lv_page_set_sb_mode");
 
-   procedure set_arrow_scroll (Self : Instance; En : u_Bool);  -- lv_page.h:147
-   pragma Import (C, set_arrow_scroll, "lv_page_set_arrow_scroll");
+   procedure Set_Arrow_Scroll (Self : Instance; En : U_Bool);
+   pragma Import (C, Set_Arrow_Scroll, "lv_page_set_arrow_scroll");
 
-   procedure set_scrl_fit
+   procedure Set_Scrl_Fit (Self : Instance; Hor_En : U_Bool; Ver_En : U_Bool);
+   pragma Import (C, Set_Scrl_Fit, "lv_page_set_scrl_fit_inline");
+
+   procedure Set_Scrl_Width (Self : Instance; W : Lv.Area.Coord_T);
+   pragma Import (C, Set_Scrl_Width, "lv_page_set_scrl_width_inline");
+
+   procedure Set_Scrl_Height (Self : Instance; H : Lv.Area.Coord_T);
+   pragma Import (C, Set_Scrl_Height, "lv_page_set_scrl_height_inline");
+
+   procedure Set_Scrl_Layout
      (Self   : Instance;
-      hor_en : u_Bool;
-      ver_en : u_Bool);  -- lv_page.h:157
-   pragma Import (C, set_scrl_fit, "lv_page_set_scrl_fit_inline");
+      Layout : Lv.Objx.Cont.Lv_Layout_T);
+   pragma Import (C, Set_Scrl_Layout, "lv_page_set_scrl_layout_inline");
 
-   procedure set_scrl_width (Self : Instance; w : LV.Area.Coord_T);  -- lv_page.h:167
-   pragma Import (C, set_scrl_width, "lv_page_set_scrl_width_inline");
-
-   procedure set_scrl_height (Self : Instance; h : LV.Area.Coord_T);  -- lv_page.h:177
-   pragma Import (C, set_scrl_height, "lv_page_set_scrl_height_inline");
-
-   procedure set_scrl_layout (Self : Instance; layout : LV.Objx.Cont.lv_layout_t);  -- lv_page.h:188
-   pragma Import (C, set_scrl_layout, "lv_page_set_scrl_layout_inline");
-
-   procedure set_style
+   procedure Set_Style
      (Self  : Instance;
-      Typ   : lv_page_style_t;
-      Style : LV.Style.Style);  -- lv_page.h:199
-   pragma Import (C, set_style, "lv_page_set_style");
+      Typ   : Lv_Page_Style_T;
+      Style : Lv.Style.Style);
+   pragma Import (C, Set_Style, "lv_page_set_style");
 
-   function get_sb_mode (Self : Instance) return lv_sb_mode_t;  -- lv_page.h:210
-   pragma Import (C, get_sb_mode, "lv_page_get_sb_mode");
+   function Get_Sb_Mode (Self : Instance) return Lv_Sb_Mode_T;
+   pragma Import (C, Get_Sb_Mode, "lv_page_get_sb_mode");
 
-   function get_arrow_scroll (Self : Instance) return u_Bool;  -- lv_page.h:218
-   pragma Import (C, get_arrow_scroll, "lv_page_get_arrow_scroll");
+   function Get_Arrow_Scroll (Self : Instance) return U_Bool;
+   pragma Import (C, Get_Arrow_Scroll, "lv_page_get_arrow_scroll");
 
-   function get_fit_width (Self : Instance) return LV.Area.Coord_T;  -- lv_page.h:226
-   pragma Import (C, get_fit_width, "lv_page_get_fit_width");
+   function Get_Fit_Width (Self : Instance) return Lv.Area.Coord_T;
+   pragma Import (C, Get_Fit_Width, "lv_page_get_fit_width");
 
-   function get_fit_height (Self : Instance) return LV.Area.Coord_T;  -- lv_page.h:233
-   pragma Import (C, get_fit_height, "lv_page_get_fit_height");
+   function Get_Fit_Height (Self : Instance) return Lv.Area.Coord_T;
+   pragma Import (C, Get_Fit_Height, "lv_page_get_fit_height");
 
-   function get_scrl_width (Self : Instance) return LV.Area.Coord_T;  -- lv_page.h:240
-   pragma Import (C, get_scrl_width, "lv_page_get_scrl_width_inline");
+   function Get_Scrl_Width (Self : Instance) return Lv.Area.Coord_T;
+   pragma Import (C, Get_Scrl_Width, "lv_page_get_scrl_width_inline");
 
-   function get_scrl_height (Self : Instance) return LV.Area.Coord_T;  -- lv_page.h:250
-   pragma Import (C, get_scrl_height, "lv_page_get_scrl_height_inline");
+   function Get_Scrl_Height (Self : Instance) return Lv.Area.Coord_T;
+   pragma Import (C, Get_Scrl_Height, "lv_page_get_scrl_height_inline");
 
-   function get_scrl_layout (Self : Instance) return LV.Objx.Cont.lv_layout_t;  -- lv_page.h:260
-   pragma Import (C, get_scrl_layout, "lv_page_get_scrl_layout_inline");
+   function Get_Scrl_Layout (Self : Instance) return Lv.Objx.Cont.Lv_Layout_T;
+   pragma Import (C, Get_Scrl_Layout, "lv_page_get_scrl_layout_inline");
 
-   function get_scrl_hor_fit (Self : Instance) return u_Bool;  -- lv_page.h:270
-   pragma Import (C, get_scrl_hor_fit, "lv_page_get_scrl_hor_fit_inline");
+   function Get_Scrl_Hor_Fit (Self : Instance) return U_Bool;
+   pragma Import (C, Get_Scrl_Hor_Fit, "lv_page_get_scrl_hor_fit_inline");
 
-   function get_scrl_fit_ver (Self : Instance) return u_Bool;  -- lv_page.h:280
-   pragma Import (C, get_scrl_fit_ver, "lv_page_get_scrl_fit_ver_inline");
+   function Get_Scrl_Fit_Ver (Self : Instance) return U_Bool;
+   pragma Import (C, Get_Scrl_Fit_Ver, "lv_page_get_scrl_fit_ver_inline");
 
-   function get_style (Self : Instance; arg2 : lv_page_style_t) return LV.Style.Style;  -- lv_page.h:291
-   pragma Import (C, get_style, "lv_page_get_style");
+   function Get_Style
+     (Self : Instance;
+      Arg2 : Lv_Page_Style_T) return Lv.Style.Style;
+   pragma Import (C, Get_Style, "lv_page_get_style");
 
-   procedure glue_obj (Self : Obj_T; Glue : u_Bool);  -- lv_page.h:302
-   pragma Import (C, glue_obj, "lv_page_glue_obj");
+   procedure Glue_Obj (Self : Obj_T; Glue : U_Bool);
+   pragma Import (C, Glue_Obj, "lv_page_glue_obj");
 
-   procedure focus
-     (Self      : Instance;
-      Ob        : Obj_T;
-      Anim_Time : uint16_t);  -- lv_page.h:310
-   pragma Import (C, focus, "lv_page_focus");
+   procedure Focus (Self : Instance; Ob : Obj_T; Anim_Time : Uint16_T);
+   pragma Import (C, Focus, "lv_page_focus");
 
-   procedure scroll_hor (Self : Instance; Dist : LV.Area.Coord_T);  -- lv_page.h:317
-   pragma Import (C, scroll_hor, "lv_page_scroll_hor");
+   procedure Scroll_Hor (Self : Instance; Dist : Lv.Area.Coord_T);
+   pragma Import (C, Scroll_Hor, "lv_page_scroll_hor");
 
-   procedure scroll_ver (Self : Instance; Dist : LV.Area.Coord_T);  -- lv_page.h:324
-   pragma Import (C, scroll_ver, "lv_page_scroll_ver");
+   procedure Scroll_Ver (Self : Instance; Dist : Lv.Area.Coord_T);
+   pragma Import (C, Scroll_Ver, "lv_page_scroll_ver");
 
---  private
---
---     type lv_page_ext_t;
---     type lv_page_ext_t_sb_struct is record
---        style : access LV.Style.lv_style_t;  -- lv_page.h:61
---        hor_area : aliased LV.Area.lv_area_t;  -- lv_page.h:62
---        ver_area : aliased LV.Area.lv_area_t;  -- lv_page.h:63
---        hor_draw : Extensions.Unsigned_1;  -- lv_page.h:64
---        ver_draw : Extensions.Unsigned_1;  -- lv_page.h:65
---        mode : Extensions.Unsigned_3;  -- lv_page.h:66
---     end record;
---     pragma Convention (C_Pass_By_Copy, lv_page_ext_t_sb_struct);
---     type lv_page_ext_t is record
---        bg : aliased lv_cont_h.lv_cont_ext_t;  -- lv_page.h:55
---        scrl : Obj_T;  -- lv_page.h:57
---        rel_action : lv_action_t;  -- lv_page.h:58
---        pr_action : lv_action_t;  -- lv_page.h:59
---        sb : aliased lv_page_ext_t_sb_struct;  -- lv_page.h:67
---        arrow_scroll : Extensions.Unsigned_1;  -- lv_page.h:68
---     end record;
---     pragma Convention (C_Pass_By_Copy, lv_page_ext_t);
---     pragma Pack (lv_page_ext_t);  -- lv_page.h:69
-
-end LV.Objx.Page;
+end Lv.Objx.Page;

@@ -1,62 +1,70 @@
 private with System;
 
-with LV.Font;
+with Lv.Font;
 
-package LV.Theme is
+package Lv.Theme is
 
    type Theme is private;
 
    No_Theme : constant Theme;
 
-   subtype Hue_T is uint16_t range 0 .. 360;
+   subtype Hue_T is Uint16_T range 0 .. 360;
 
    procedure Set_Current (T : Theme);  -- lv_theme.h:280
    pragma Import (C, Set_Current, "lv_theme_set_current");
 
-   function Get_current return Theme;  -- lv_theme.h:286
+   function Get_Current return Theme;  -- lv_theme.h:286
    pragma Import (C, Get_Current, "lv_theme_get_current");
 
-   function material_init (Hue : Hue_T; Font : LV.Font.Font) return Theme;  -- default.h:42
-   pragma Import (C, material_init, "lv_theme_material_init");
+   function Material_Init
+     (Hue  : Hue_T;
+      Font : Lv.Font.Font) return Theme;  -- default.h:42
+   pragma Import (C, Material_Init, "lv_theme_material_init");
 
-   function get_material return access int;  -- material.h:48
-   pragma Import (C, get_material, "lv_theme_get_material");
+   function Get_Material return access int;  -- material.h:48
+   pragma Import (C, Get_Material, "lv_theme_get_material");
 
-   function mono_init (Hue : Hue_T; Font : LV.Font.Font) return Theme;  -- default.h:42
-   pragma Import (C, mono_init, "lv_theme_mono_init");
+   function Mono_Init
+     (Hue  : Hue_T;
+      Font : Lv.Font.Font) return Theme;  -- default.h:42
+   pragma Import (C, Mono_Init, "lv_theme_mono_init");
 
-   function get_mono return access int;  -- mono.h:48
-   pragma Import (C, get_mono, "lv_theme_get_mono");
+   function Get_Mono return access int;  -- mono.h:48
+   pragma Import (C, Get_Mono, "lv_theme_get_mono");
 
-   function alien_init (Hue : Hue_T; Font : LV.Font.Font) return Theme;  -- alien.h:42
-   pragma Import (C, alien_init, "lv_theme_alien_init");
+   function Alien_Init
+     (Hue  : Hue_T;
+      Font : Lv.Font.Font) return Theme;  -- alien.h:42
+   pragma Import (C, Alien_Init, "lv_theme_alien_init");
 
-   function get_alien return Theme;  -- alien.h:47
-   pragma Import (C, get_alien, "lv_theme_get_alien");
+   function Get_Alien return Theme;  -- alien.h:47
+   pragma Import (C, Get_Alien, "lv_theme_get_alien");
 
-   function default_init (Hue : Hue_T; Font : LV.Font.Font) return Theme;  -- default.h:42
-   pragma Import (C, default_init, "lv_theme_default_init");
+   function Default_Init
+     (Hue  : Hue_T;
+      Font : Lv.Font.Font) return Theme;  -- default.h:42
+   pragma Import (C, Default_Init, "lv_theme_default_init");
 
-   function get_default return Theme;  -- default.h:48
-   pragma Import (C, get_default, "lv_theme_get_default");
+   function Get_Default return Theme;  -- default.h:48
+   pragma Import (C, Get_Default, "lv_theme_get_default");
 
-   function nemo_init (Hue : Hue_T; Font : LV.Font.Font) return Theme;
-   pragma Import (C, nemo_init, "lv_theme_nemo_init");
+   function Nemo_Init (Hue : Hue_T; Font : Lv.Font.Font) return Theme;
+   pragma Import (C, Nemo_Init, "lv_theme_nemo_init");
 
-   function get_nemo return Theme;  -- nemo.h:48
-   pragma Import (C, get_nemo, "lv_theme_get_nemo");
+   function Get_Nemo return Theme;  -- nemo.h:48
+   pragma Import (C, Get_Nemo, "lv_theme_get_nemo");
 
-   function night_init (Hue : Hue_T; Font : LV.Font.Font) return Theme;
-   pragma Import (C, night_init, "lv_theme_night_init");
+   function Night_Init (Hue : Hue_T; Font : Lv.Font.Font) return Theme;
+   pragma Import (C, Night_Init, "lv_theme_night_init");
 
-   function get_night return Theme;  -- night.h:48
-   pragma Import (C, get_night, "lv_theme_get_night");
+   function Get_Night return Theme;  -- night.h:48
+   pragma Import (C, Get_Night, "lv_theme_get_night");
 
-   function zen_init (Hue : Hue_T; Font : LV.Font.Font) return Theme;
-   pragma Import (C, zen_init, "lv_theme_zen_init");
+   function Zen_Init (Hue : Hue_T; Font : Lv.Font.Font) return Theme;
+   pragma Import (C, Zen_Init, "lv_theme_zen_init");
 
-   function get_zen return Theme;  -- zen.h:48
-   pragma Import (C, get_zen, "lv_theme_get_zen");
+   function Get_Zen return Theme;  -- zen.h:48
+   pragma Import (C, Get_Zen, "lv_theme_get_zen");
 
 private
 
@@ -278,4 +286,4 @@ private
 --     end record;
 --     pragma Convention (C_Pass_By_Copy, lv_theme_t);  -- lv_theme.h:269
 
-end LV.Theme;
+end Lv.Theme;

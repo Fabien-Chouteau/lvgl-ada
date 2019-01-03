@@ -124,8 +124,8 @@ package body Ada_Test is
       align (C, No_Obj, ALIGN_IN_TOP_MID, 0, LV_DPI / 4);
       Chart.set_type (C, Chart.TYPE_COLUMN);
 
-      Chart.set_series_opa (C, LV_OPA_70);
-      Ser := Chart.add_series (C, LV_COLOR_RED);
+      Chart.set_series_opa (C, OPA_70);
+      Ser := Chart.add_series (C, COLOR_RED);
       Chart.set_next (C, Ser, 40);
       Chart.set_next (C, Ser, 30);
       Chart.set_next (C, Ser, 47);

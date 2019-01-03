@@ -1,52 +1,46 @@
 with Interfaces.C; use Interfaces.C;
 with Interfaces.C.Strings;
-with LV.Style;
+with Lv.Style;
 
-package LV.Objx.Checkbox is
+package Lv.Objx.Checkbox is
 
    subtype Instance is Obj_T;
 
-   subtype style_t is uint8_t;  -- lv_cb.h:62
+   subtype Style_T is Uint8_T;
 
-   function create (Parent : Obj_T; Copy : Instance) return Instance;  -- lv_cb.h:74
-   pragma Import (C, create, "lv_cb_create");
+   function Create (Parent : Obj_T; Copy : Instance) return Instance;
+   pragma Import (C, Create, "lv_cb_create");
 
-   procedure set_text (Self : Instance; arg2 : Interfaces.C.Strings.chars_ptr);  -- lv_cb.h:85
-   pragma Import (C, set_text, "lv_cb_set_text");
+   procedure Set_Text (Self : Instance; Arg2 : Interfaces.C.Strings.chars_ptr);
+   pragma Import (C, Set_Text, "lv_cb_set_text");
 
-   procedure set_checked (Self : Instance; checked : u_Bool);  -- lv_cb.h:92
-   pragma Import (C, set_checked, "lv_cb_set_checked_inline");
+   procedure Set_Checked (Self : Instance; Checked : U_Bool);
+   pragma Import (C, Set_Checked, "lv_cb_set_checked_inline");
 
-   procedure set_inactive (Self : Instance);  -- lv_cb.h:101
-   pragma Import (C, set_inactive, "lv_cb_set_inactive_inline");
+   procedure Set_Inactive (Self : Instance);
+   pragma Import (C, Set_Inactive, "lv_cb_set_inactive_inline");
 
-   procedure set_action (Self : Instance; action : lv_action_t);  -- lv_cb.h:110
-   pragma Import (C, set_action, "lv_cb_set_action_inline");
+   procedure Set_Action (Self : Instance; Action : Lv_Action_T);
+   pragma Import (C, Set_Action, "lv_cb_set_action_inline");
 
-   procedure set_style
+   procedure Set_Style
      (Self : Instance;
-      arg2 : style_t;
-      arg3 : access LV.Style.Style);  -- lv_cb.h:122
-   pragma Import (C, set_style, "lv_cb_set_style");
+      Arg2 : Style_T;
+      Arg3 : access Lv.Style.Style);
+   pragma Import (C, Set_Style, "lv_cb_set_style");
 
-   function get_text (Self : Instance) return Interfaces.C.Strings.chars_ptr;  -- lv_cb.h:133
-   pragma Import (C, get_text, "lv_cb_get_text");
+   function Get_Text (Self : Instance) return Interfaces.C.Strings.chars_ptr;
+   pragma Import (C, Get_Text, "lv_cb_get_text");
 
-   function is_checked (Self : Instance) return u_Bool;  -- lv_cb.h:140
-   pragma Import (C, is_checked, "lv_cb_is_checked_inline");
+   function Is_Checked (Self : Instance) return U_Bool;
+   pragma Import (C, Is_Checked, "lv_cb_is_checked_inline");
 
-   function get_action (Self : Instance) return lv_action_t;  -- lv_cb.h:150
-   pragma Import (C, get_action, "lv_cb_get_action_inline");
+   function Get_Action (Self : Instance) return Lv_Action_T;
+   pragma Import (C, Get_Action, "lv_cb_get_action_inline");
 
-   function get_style (Self : Instance; arg2 : style_t) return access LV.Style.Style;  -- lv_cb.h:162
-   pragma Import (C, get_style, "lv_cb_get_style");
+   function Get_Style
+     (Self : Instance;
+      Arg2 : Style_T) return access Lv.Style.Style;
+   pragma Import (C, Get_Style, "lv_cb_get_style");
 
---  private
---     type lv_cb_ext_t is record
---        bg_btn : aliased lv_btn_h.lv_btn_ext_t;  -- lv_cb.h:48
---        bullet : access lv_obj_h.lv_obj_t;  -- lv_cb.h:50
---        label : access lv_obj_h.lv_obj_t;  -- lv_cb.h:51
---     end record;
---     pragma Convention (C_Pass_By_Copy, lv_cb_ext_t);  -- lv_cb.h:52
-
-end LV.Objx.Checkbox;
+end Lv.Objx.Checkbox;

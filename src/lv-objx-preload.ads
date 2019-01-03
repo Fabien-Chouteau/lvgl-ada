@@ -1,48 +1,42 @@
 with Interfaces.C; use Interfaces.C;
-with LV.Style;
+with Lv.Style;
 with System;
 
-package LV.Objx.Preload is
+package Lv.Objx.Preload is
 
    subtype Instance is Obj_T;
 
-   subtype lv_preloader_type_t is uint8_t;
+   subtype Lv_Preloader_Type_T is Uint8_T;
 
-   subtype style_t is uint8_t;
+   subtype Style_T is Uint8_T;
 
-   function create (Parent : Obj_T; Copy : Instance) return Instance;
-   pragma Import (C, create, "lv_preload_create");
+   function Create (Parent : Obj_T; Copy : Instance) return Instance;
+   pragma Import (C, Create, "lv_preload_create");
 
-   procedure set_arc_length (Self : Instance; arg2 : uint16_t);  -- lv_preload.h:85
-   pragma Import (C, set_arc_length, "lv_preload_set_arc_length");
+   procedure Set_Arc_Length (Self : Instance; Arg2 : Uint16_T);
+   pragma Import (C, Set_Arc_Length, "lv_preload_set_arc_length");
 
-   procedure set_spin_time (Self : Instance; arg2 : uint16_t);  -- lv_preload.h:92
-   pragma Import (C, set_spin_time, "lv_preload_set_spin_time");
+   procedure Set_Spin_Time (Self : Instance; Arg2 : Uint16_T);
+   pragma Import (C, Set_Spin_Time, "lv_preload_set_spin_time");
 
-   procedure set_style
+   procedure Set_Style
      (Self : Instance;
-      arg2 : style_t;
-      arg3 : access LV.Style.Style);  -- lv_preload.h:104
-   pragma Import (C, set_style, "lv_preload_set_style");
+      Arg2 : Style_T;
+      Arg3 : access Lv.Style.Style);
+   pragma Import (C, Set_Style, "lv_preload_set_style");
 
-   function get_arc_length (Self : Instance) return uint16_t;  -- lv_preload.h:114
-   pragma Import (C, get_arc_length, "lv_preload_get_arc_length");
+   function Get_Arc_Length (Self : Instance) return Uint16_T;
+   pragma Import (C, Get_Arc_Length, "lv_preload_get_arc_length");
 
-   function get_spin_time (Self : Instance) return uint16_t;  -- lv_preload.h:120
-   pragma Import (C, get_spin_time, "lv_preload_get_spin_time");
+   function Get_Spin_Time (Self : Instance) return Uint16_T;
+   pragma Import (C, Get_Spin_Time, "lv_preload_get_spin_time");
 
-   function get_style (Self : Instance; arg2 : style_t) return access LV.Style.Style;  -- lv_preload.h:128
-   pragma Import (C, get_style, "lv_preload_get_style");
+   function Get_Style
+     (Self : Instance;
+      Arg2 : Style_T) return access Lv.Style.Style;
+   pragma Import (C, Get_Style, "lv_preload_get_style");
 
-   procedure spinner_animation (arg1 : System.Address; arg2 : int32_t);  -- lv_preload.h:140
-   pragma Import (C, spinner_animation, "lv_preload_spinner_animation");
+   procedure Spinner_Animation (Arg1 : System.Address; Arg2 : Int32_T);
+   pragma Import (C, Spinner_Animation, "lv_preload_spinner_animation");
 
---  private
---     type lv_preload_ext_t is record
---        arc : aliased lv_arc_h.lv_arc_ext_t;  -- lv_preload.h:51
---        arc_length : aliased uint16_t;  -- lv_preload.h:53
---        time : aliased uint16_t;  -- lv_preload.h:54
---     end record;
---     pragma Convention (C_Pass_By_Copy, lv_preload_ext_t);  -- lv_preload.h:55
-
-end LV.Objx.Preload;
+end Lv.Objx.Preload;

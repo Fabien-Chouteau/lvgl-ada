@@ -1,54 +1,44 @@
 with Interfaces.C.Extensions;
 with Interfaces.C; use Interfaces.C;
 
-with LV.Area;
-with LV.Style;
+with Lv.Area;
+with Lv.Style;
 
-package LV.Objx.Line is
+package Lv.Objx.Line is
 
    subtype Instance is Obj_T;
 
-   function create (Parent : Obj_T; Copy : Obj_T) return Instance;
-   pragma Import (C, create, "lv_line_create");
+   function Create (Parent : Obj_T; Copy : Obj_T) return Instance;
+   pragma Import (C, Create, "lv_line_create");
 
-   procedure set_points
+   procedure Set_Points
      (Self : Instance;
-      arg2 : System.Address;
-      arg3 : uint16_t);  -- lv_line.h:67
-   pragma Import (C, set_points, "lv_line_set_points");
+      Arg2 : System.Address;
+      Arg3 : Uint16_T);
+   pragma Import (C, Set_Points, "lv_line_set_points");
 
-   procedure set_auto_size (Self : Instance; arg2 : u_Bool);  -- lv_line.h:75
-   pragma Import (C, set_auto_size, "lv_line_set_auto_size");
+   procedure Set_Auto_Size (Self : Instance; Arg2 : U_Bool);
+   pragma Import (C, Set_Auto_Size, "lv_line_set_auto_size");
 
-   procedure set_y_invert (Self : Instance; arg2 : u_Bool);  -- lv_line.h:84
-   pragma Import (C, set_y_invert, "lv_line_set_y_invert");
+   procedure Set_Y_Invert (Self : Instance; Arg2 : U_Bool);
+   pragma Import (C, Set_Y_Invert, "lv_line_set_y_invert");
 
-   procedure set_style (Self : Instance; style : access LV.Style.Style);  -- lv_line.h:91
-   pragma Import (C, set_style, "lv_line_set_style_inline");
+   procedure Set_Style (Self : Instance; Style : access Lv.Style.Style);
+   pragma Import (C, Set_Style, "lv_line_set_style_inline");
 
-   procedure set_upscale (Self : Instance; upcale : u_Bool);  -- lv_line.h:101
-   pragma Import (C, set_upscale, "lv_line_set_upscale_inline");
+   procedure Set_Upscale (Self : Instance; Upcale : U_Bool);
+   pragma Import (C, Set_Upscale, "lv_line_set_upscale_inline");
 
-   function get_auto_size (Self : Instance) return u_Bool;  -- lv_line.h:115
-   pragma Import (C, get_auto_size, "lv_line_get_auto_size");
+   function Get_Auto_Size (Self : Instance) return U_Bool;
+   pragma Import (C, Get_Auto_Size, "lv_line_get_auto_size");
 
-   function get_y_inv (Self : Instance) return u_Bool;  -- lv_line.h:122
-   pragma Import (C, get_y_inv, "lv_line_get_y_inv");
+   function Get_Y_Inv (Self : Instance) return U_Bool;
+   pragma Import (C, Get_Y_Inv, "lv_line_get_y_inv");
 
-   function get_style (Self : Instance) return access LV.Style.Style;  -- lv_line.h:129
-   pragma Import (C, get_style, "lv_line_get_style_inline");
+   function Get_Style (Self : Instance) return access Lv.Style.Style;
+   pragma Import (C, Get_Style, "lv_line_get_style_inline");
 
-   function get_upscale (Self : Instance) return u_Bool;  -- lv_line.h:139
-   pragma Import (C, get_upscale, "lv_line_get_upscale_inline");
+   function Get_Upscale (Self : Instance) return U_Bool;
+   pragma Import (C, Get_Upscale, "lv_line_get_upscale_inline");
 
---  private
---     type lv_lineext_t is record
---        point_array : access constant lv_area_h.Point_T;  -- lv_line.h:38
---        point_num : aliased sys_ustdint_h.uint16_t;  -- lv_line.h:39
---        auto_size : Extensions.Unsigned_1;  -- lv_line.h:40
---        y_inv : Extensions.Unsigned_1;  -- lv_line.h:41
---     end record;
---     pragma Convention (C_Pass_By_Copy, lv_line_ext_t);
---     pragma Pack (lv_line_ext_t);  -- lv_line.h:42
-
-end LV.Objx.Line;
+end Lv.Objx.Line;

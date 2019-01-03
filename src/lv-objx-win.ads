@@ -1,97 +1,86 @@
 with Interfaces.C; use Interfaces.C;
-with LV.Style;
-with LV.Area;
-with LV.Objx.Page;
-with LV.Objx.Btn;
-with LV.Objx.Cont;
+with Lv.Style;
+with Lv.Area;
+with Lv.Objx.Page;
+with Lv.Objx.Btn;
+with Lv.Objx.Cont;
 with System;
 with Interfaces.C.Strings;
 
-package LV.Objx.Win is
+package Lv.Objx.Win is
 
    subtype Instance is Obj_T;
 
-   subtype style_t is uint8_t;  -- lv_win.h:80
+   subtype Style_T is Uint8_T;
 
-   function create (Parent : Obj_T; Copy : Instance) return Instance;  -- lv_win.h:92
-   pragma Import (C, create, "lv_win_create");
+   function Create (Parent : Obj_T; Copy : Instance) return Instance;
+   pragma Import (C, Create, "lv_win_create");
 
-   procedure clean (Self : Instance);  -- lv_win.h:98
-   pragma Import (C, clean, "lv_win_clean");
+   procedure Clean (Self : Instance);
+   pragma Import (C, Clean, "lv_win_clean");
 
-   function add_btn
+   function Add_Btn
      (Self : Instance;
-      arg2 : System.Address;
-      arg3 : lv_action_t) return Btn.Instance;  -- lv_win.h:111
-   pragma Import (C, add_btn, "lv_win_add_btn");
+      Arg2 : System.Address;
+      Arg3 : Lv_Action_T) return Btn.Instance;
+   pragma Import (C, Add_Btn, "lv_win_add_btn");
 
-   function close_action (Self : Instance) return lv_res_t;  -- lv_win.h:122
-   pragma Import (C, close_action, "lv_win_close_action");
+   function Close_Action (Self : Instance) return Lv_Res_T;
+   pragma Import (C, Close_Action, "lv_win_close_action");
 
-   procedure set_title (Self : Instance; arg2 : Interfaces.C.Strings.chars_ptr);  -- lv_win.h:129
-   pragma Import (C, set_title, "lv_win_set_title");
-
-   procedure set_btn_size (Self : Instance; arg2 : LV.Area.Coord_T);  -- lv_win.h:136
-   pragma Import (C, set_btn_size, "lv_win_set_btn_size");
-
-   procedure set_layout (Self : Instance; arg2 : LV.Objx.Cont.lv_layout_t);  -- lv_win.h:143
-   pragma Import (C, set_layout, "lv_win_set_layout");
-
-   procedure set_sb_mode (Self : Instance; arg2 : LV.Objx.Page.lv_sb_mode_t);  -- lv_win.h:150
-   pragma Import (C, set_sb_mode, "lv_win_set_sb_mode");
-
-   procedure set_style
+   procedure Set_Title
      (Self : Instance;
-      arg2 : style_t;
-      arg3 : access LV.Style.Style);  -- lv_win.h:158
-   pragma Import (C, set_style, "lv_win_set_style");
+      Arg2 : Interfaces.C.Strings.chars_ptr);
+   pragma Import (C, Set_Title, "lv_win_set_title");
 
-   function get_title (Self : Instance) return Interfaces.C.Strings.chars_ptr;  -- lv_win.h:170
-   pragma Import (C, get_title, "lv_win_get_title");
+   procedure Set_Btn_Size (Self : Instance; Arg2 : Lv.Area.Coord_T);
+   pragma Import (C, Set_Btn_Size, "lv_win_set_btn_size");
 
-   function get_content (Self : Instance) return Page.Instance;  -- lv_win.h:177
-   pragma Import (C, get_content, "lv_win_get_content");
+   procedure Set_Layout (Self : Instance; Arg2 : Lv.Objx.Cont.Lv_Layout_T);
+   pragma Import (C, Set_Layout, "lv_win_set_layout");
 
-   function get_btn_size (Self : Instance) return LV.Area.Coord_T;  -- lv_win.h:184
-   pragma Import (C, get_btn_size, "lv_win_get_btn_size");
+   procedure Set_Sb_Mode (Self : Instance; Arg2 : Lv.Objx.Page.Lv_Sb_Mode_T);
+   pragma Import (C, Set_Sb_Mode, "lv_win_set_sb_mode");
 
-   function get_from_btn (Ctrl_Btn : Btn.Instance) return Instance;  -- lv_win.h:192
-   pragma Import (C, get_from_btn, "lv_win_get_from_btn");
+   procedure Set_Style
+     (Self : Instance;
+      Arg2 : Style_T;
+      Arg3 : access Lv.Style.Style);
+   pragma Import (C, Set_Style, "lv_win_set_style");
 
-   function get_layout (Self : Instance) return LV.Objx.Cont.lv_layout_t;  -- lv_win.h:199
-   pragma Import (C, get_layout, "lv_win_get_layout");
+   function Get_Title (Self : Instance) return Interfaces.C.Strings.chars_ptr;
+   pragma Import (C, Get_Title, "lv_win_get_title");
 
-   function get_sb_mode (Self : Instance) return LV.Objx.Page.lv_sb_mode_t;  -- lv_win.h:206
-   pragma Import (C, get_sb_mode, "lv_win_get_sb_mode");
+   function Get_Content (Self : Instance) return Page.Instance;
+   pragma Import (C, Get_Content, "lv_win_get_content");
 
-   function get_width (Self : Instance) return LV.Area.Coord_T;  -- lv_win.h:213
-   pragma Import (C, get_width, "lv_win_get_width");
+   function Get_Btn_Size (Self : Instance) return Lv.Area.Coord_T;
+   pragma Import (C, Get_Btn_Size, "lv_win_get_btn_size");
 
-   function get_style (Self : Instance; arg2 : style_t) return access LV.Style.Style;  -- lv_win.h:221
-   pragma Import (C, get_style, "lv_win_get_style");
+   function Get_From_Btn (Ctrl_Btn : Btn.Instance) return Instance;
+   pragma Import (C, Get_From_Btn, "lv_win_get_from_btn");
 
-   procedure focus
-     (Self      : Instance;
-      Obj       : Obj_T;
-      Anim_Time : uint16_t);  -- lv_win.h:233
-   pragma Import (C, focus, "lv_win_focus");
+   function Get_Layout (Self : Instance) return Lv.Objx.Cont.Lv_Layout_T;
+   pragma Import (C, Get_Layout, "lv_win_get_layout");
 
-   procedure scroll_hor (Self : Instance; dist : LV.Area.Coord_T);  -- lv_win.h:240
-   pragma Import (C, scroll_hor, "lv_win_scroll_hor_inline");
+   function Get_Sb_Mode (Self : Instance) return Lv.Objx.Page.Lv_Sb_Mode_T;
+   pragma Import (C, Get_Sb_Mode, "lv_win_get_sb_mode");
 
-   procedure scroll_ver (Self : Instance; dist : LV.Area.Coord_T);  -- lv_win.h:250
-   pragma Import (C, scroll_ver, "lv_win_scroll_ver_inline");
+   function Get_Width (Self : Instance) return Lv.Area.Coord_T;
+   pragma Import (C, Get_Width, "lv_win_get_width");
 
---  private
---     type lv_win_ext_t is record
---        page : access lv_obj_h.lv_obj_t;  -- lv_win.h:62
---        header : access lv_obj_h.lv_obj_t;  -- lv_win.h:63
---        title : access lv_obj_h.lv_obj_t;  -- lv_win.h:64
---        style_header : access lv_style_h.lv_style_t;  -- lv_win.h:65
---        style_btn_rel : access lv_style_h.lv_style_t;  -- lv_win.h:66
---        style_btn_pr : access lv_style_h.lv_style_t;  -- lv_win.h:67
---        btn_size : aliased LV.Area.Coord_T;  -- lv_win.h:68
---     end record;
---     pragma Convention (C_Pass_By_Copy, lv_win_ext_t);  -- lv_win.h:69
+   function Get_Style
+     (Self : Instance;
+      Arg2 : Style_T) return access Lv.Style.Style;
+   pragma Import (C, Get_Style, "lv_win_get_style");
 
-end LV.Objx.Win;
+   procedure Focus (Self : Instance; Obj : Obj_T; Anim_Time : Uint16_T);
+   pragma Import (C, Focus, "lv_win_focus");
+
+   procedure Scroll_Hor (Self : Instance; Dist : Lv.Area.Coord_T);
+   pragma Import (C, Scroll_Hor, "lv_win_scroll_hor_inline");
+
+   procedure Scroll_Ver (Self : Instance; Dist : Lv.Area.Coord_T);
+   pragma Import (C, Scroll_Ver, "lv_win_scroll_ver_inline");
+
+end Lv.Objx.Win;

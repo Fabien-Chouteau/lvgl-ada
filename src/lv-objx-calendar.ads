@@ -1,88 +1,81 @@
 with Interfaces.C; use Interfaces.C;
 with System;
-with LV.Style;
+with Lv.Style;
 
-package LV.Objx.Calendar is
+package Lv.Objx.Calendar is
 
    subtype Instance is Obj_T;
 
-   type date_t is record
-      year  : aliased uint16_t;  -- lv_calendar.h:35
-      month : aliased int8_t;  -- lv_calendar.h:36
-      day  : aliased int8_t;  -- lv_calendar.h:37
+   type Date_T is record
+      Year  : aliased Uint16_T;
+      Month : aliased Int8_T;
+      Day   : aliased Int8_T;
    end record;
-   pragma Convention (C_Pass_By_Copy, date_t);  -- lv_calendar.h:38
+   pragma Convention (C_Pass_By_Copy, Date_T);
 
-   type String_Array is array (Natural range <>) of Interfaces.C.Strings.chars_ptr
-     with Convention => C;
+   type String_Array is
+     array (Natural range <>) of Interfaces.C.Strings.chars_ptr with
+        Convention => C;
 
-   subtype style_t is uint8_t;  -- lv_calendar.h:73
+   subtype Style_T is Uint8_T;
 
-   function create (Parent : Obj_T; Copy : Instance) return Instance;  -- lv_calendar.h:87
-   pragma Import (C, create, "lv_calendar_create");
+   function Create (Parent : Obj_T; Copy : Instance) return Instance;
+   pragma Import (C, Create, "lv_calendar_create");
 
-   procedure set_today_date (Self : Instance; arg2 : access date_t);  -- lv_calendar.h:103
-   pragma Import (C, set_today_date, "lv_calendar_set_today_date");
+   procedure Set_Today_Date (Self : Instance; Arg2 : access Date_T);
+   pragma Import (C, Set_Today_Date, "lv_calendar_set_today_date");
 
-   procedure set_showed_date (Self : Instance; arg2 : access date_t);  -- lv_calendar.h:110
-   pragma Import (C, set_showed_date, "lv_calendar_set_showed_date");
+   procedure Set_Showed_Date (Self : Instance; Arg2 : access Date_T);
+   pragma Import (C, Set_Showed_Date, "lv_calendar_set_showed_date");
 
-   procedure set_highlighted_dates
+   procedure Set_Highlighted_Dates
      (Self : Instance;
-      arg2 : System.Address; --  Array of date_t
-      arg3 : uint16_t);  -- lv_calendar.h:118
-   pragma Import (C, set_highlighted_dates, "lv_calendar_set_highlighted_dates");
+      Arg2 : System.Address; --  Array of date_t
+      Arg3 : Uint16_T);
+   pragma Import
+     (C,
+      Set_Highlighted_Dates,
+      "lv_calendar_set_highlighted_dates");
 
-   procedure set_day_names (Self : Instance; arg2 : System.Address);  -- lv_calendar.h:127
-   pragma Import (C, set_day_names, "lv_calendar_set_day_names");
+   procedure Set_Day_Names (Self : Instance; Arg2 : System.Address);
+   pragma Import (C, Set_Day_Names, "lv_calendar_set_day_names");
 
-   procedure set_month_names (Self : Instance; arg2 : System.Address);  -- lv_calendar.h:135
-   pragma Import (C, set_month_names, "lv_calendar_set_month_names");
+   procedure Set_Month_Names (Self : Instance; Arg2 : System.Address);
+   pragma Import (C, Set_Month_Names, "lv_calendar_set_month_names");
 
-   procedure set_style
+   procedure Set_Style
      (Self : Instance;
-      arg2 : style_t;
-      arg3 : access LV.Style.Style);  -- lv_calendar.h:143
-   pragma Import (C, set_style, "lv_calendar_set_style");
+      Arg2 : Style_T;
+      Arg3 : access Lv.Style.Style);
+   pragma Import (C, Set_Style, "lv_calendar_set_style");
 
-   function get_today_date (Self : Instance) return access date_t;  -- lv_calendar.h:154
-   pragma Import (C, get_today_date, "lv_calendar_get_today_date");
+   function Get_Today_Date (Self : Instance) return access Date_T;
+   pragma Import (C, Get_Today_Date, "lv_calendar_get_today_date");
 
-   function get_showed_date (Self : Instance) return access date_t;  -- lv_calendar.h:161
-   pragma Import (C, get_showed_date, "lv_calendar_get_showed_date");
+   function Get_Showed_Date (Self : Instance) return access Date_T;
+   pragma Import (C, Get_Showed_Date, "lv_calendar_get_showed_date");
 
-   function get_highlighted_dates (Self : Instance) return access date_t;  -- lv_calendar.h:168
-   pragma Import (C, get_highlighted_dates, "lv_calendar_get_highlighted_dates");
+   function Get_Highlighted_Dates (Self : Instance) return access Date_T;
+   pragma Import
+     (C,
+      Get_Highlighted_Dates,
+      "lv_calendar_get_highlighted_dates");
 
-   function get_highlighted_dates_num (Self : Instance) return uint16_t;  -- lv_calendar.h:175
-   pragma Import (C, get_highlighted_dates_num, "lv_calendar_get_highlighted_dates_num");
+   function Get_Highlighted_Dates_Num (Self : Instance) return Uint16_T;
+   pragma Import
+     (C,
+      Get_Highlighted_Dates_Num,
+      "lv_calendar_get_highlighted_dates_num");
 
-   function get_day_names (Self : Instance) return System.Address;  -- lv_calendar.h:183
-   pragma Import (C, get_day_names, "lv_calendar_get_day_names");
+   function Get_Day_Names (Self : Instance) return System.Address;
+   pragma Import (C, Get_Day_Names, "lv_calendar_get_day_names");
 
-   function get_month_names (Self : Instance) return System.Address;  -- lv_calendar.h:190
-   pragma Import (C, get_month_names, "lv_calendar_get_month_names");
+   function Get_Month_Names (Self : Instance) return System.Address;
+   pragma Import (C, Get_Month_Names, "lv_calendar_get_month_names");
 
-   function get_style (Self : Instance; arg2 : style_t) return access LV.Style.Style;  -- lv_calendar.h:198
-   pragma Import (C, get_style, "lv_calendar_get_style");
+   function Get_Style
+     (Self : Instance;
+      Arg2 : Style_T) return access Lv.Style.Style;
+   pragma Import (C, Get_Style, "lv_calendar_get_style");
 
---  private
---     type lv_calendar_ext_t is record
---        today : aliased lv_calendar_date_t;  -- lv_calendar.h:44
---        showed_date : aliased lv_calendar_date_t;  -- lv_calendar.h:45
---        highlighted_dates : access lv_calendar_date_t;  -- lv_calendar.h:46
---        highlighted_dates_num : aliased uint8_t;  -- lv_calendar.h:47
---        btn_pressing : aliased sys_ustdint_h.int8_t;  -- lv_calendar.h:48
---        day_names : System.Address;  -- lv_calendar.h:49
---        month_names : System.Address;  -- lv_calendar.h:50
---        style_header : access lv_style_h.lv_style_t;  -- lv_calendar.h:53
---        style_header_pr : access lv_style_h.lv_style_t;  -- lv_calendar.h:54
---        style_day_names : access lv_style_h.lv_style_t;  -- lv_calendar.h:55
---        style_highlighted_days : access lv_style_h.lv_style_t;  -- lv_calendar.h:56
---        style_inactive_days : access lv_style_h.lv_style_t;  -- lv_calendar.h:57
---        style_week_box : access lv_style_h.lv_style_t;  -- lv_calendar.h:58
---        style_today_box : access lv_style_h.lv_style_t;  -- lv_calendar.h:59
---     end record;
---     pragma Convention (C_Pass_By_Copy, lv_calendar_ext_t);  -- lv_calendar.h:60
-
-end LV.Objx.Calendar;
+end Lv.Objx.Calendar;

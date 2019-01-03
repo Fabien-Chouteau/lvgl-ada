@@ -4,60 +4,68 @@ with Interfaces.C; use Interfaces.C;
 with System;
 with Interfaces.C.Extensions;
 
-package LV.Anim is
+package Lv.Anim is
 
-   type lv_anim_path_t is access function (arg1 : System.Address) return int32_t;
-   pragma Convention (C, lv_anim_path_t);  -- ../lv_misc/lv_anim.h:38
+   type Anim_Path_T is access function
+     (Arg1 : System.Address) return Int32_T;
+   pragma Convention (C, Anim_Path_T);
 
-   type lv_anim_fp_t is access procedure (arg1 : System.Address; arg2 : int32_t);
-   pragma Convention (C, lv_anim_fp_t);  -- ../lv_misc/lv_anim.h:40
+   type Anim_Fp_T is access procedure
+     (Arg1 : System.Address;
+      Arg2 : Int32_T);
+   pragma Convention (C, Anim_Fp_T);
 
-   type lv_anim_cb_t is access procedure (arg1 : System.Address);
-   pragma Convention (C, lv_anim_cb_t);  -- ../lv_misc/lv_anim.h:41
+   type Anim_Cb_T is access procedure (Arg1 : System.Address);
+   pragma Convention (C, Anim_Cb_T);
 
-   type u_lv_anim_t is record
-      var : System.Address;  -- ../lv_misc/lv_anim.h:45
-      fp : lv_anim_fp_t;  -- ../lv_misc/lv_anim.h:46
-      end_cb : lv_anim_cb_t;  -- ../lv_misc/lv_anim.h:47
-      path : lv_anim_path_t;  -- ../lv_misc/lv_anim.h:48
-      start : aliased int32_t;  -- ../lv_misc/lv_anim.h:49
-      c_end : aliased int32_t;  -- ../lv_misc/lv_anim.h:50
-      time : aliased uint16_t;  -- ../lv_misc/lv_anim.h:51
-      act_time : aliased int16_t;  -- ../lv_misc/lv_anim.h:52
-      playback_pause : aliased uint16_t;  -- ../lv_misc/lv_anim.h:53
-      repeat_pause : aliased uint16_t;  -- ../lv_misc/lv_anim.h:54
-      playback : Extensions.Unsigned_1;  -- ../lv_misc/lv_anim.h:55
-      repeat : Extensions.Unsigned_1;  -- ../lv_misc/lv_anim.h:56
-      playback_now : Extensions.Unsigned_1;  -- ../lv_misc/lv_anim.h:58
-      has_run : Extensions.Unsigned_1;  -- ../lv_misc/lv_anim.h:59
+   type U_Lv_Anim_T is record
+      Var            : System.Address;
+      Fp             : Anim_Fp_T;
+      End_Cb         : Anim_Cb_T;
+      Path           : Anim_Path_T;
+      Start          : aliased Int32_T;
+      C_End          : aliased Int32_T;
+      Time           : aliased Uint16_T;
+      Act_Time       : aliased Int16_T;
+      Playback_Pause : aliased Uint16_T;
+      Repeat_Pause   : aliased Uint16_T;
+      Playback       : Extensions.Unsigned_1;
+      Repeat         : Extensions.Unsigned_1;
+      Playback_Now   : Extensions.Unsigned_1;
+      Has_Run        : Extensions.Unsigned_1;
    end record;
-   pragma Convention (C_Pass_By_Copy, u_lv_anim_t);
-   pragma Pack (u_lv_anim_t);  -- ../lv_misc/lv_anim.h:43
+   pragma Convention (C_Pass_By_Copy, U_Lv_Anim_T);
+   pragma Pack (U_Lv_Anim_T);
 
-   subtype lv_anim_t is u_lv_anim_t;  -- ../lv_misc/lv_anim.h:60
+   subtype Anim_T is U_Lv_Anim_T;
 
-   procedure lv_anim_init;  -- ../lv_misc/lv_anim.h:85
-   pragma Import (C, lv_anim_init, "lv_anim_init");
+   procedure Anim_Init;
+   pragma Import (C, Anim_Init, "lv_anim_init");
 
-   procedure lv_anim_create (arg1 : access lv_anim_t);  -- ../lv_misc/lv_anim.h:91
-   pragma Import (C, lv_anim_create, "lv_anim_create");
+   procedure Anim_Create (Arg1 : access Anim_T);
+   pragma Import (C, Anim_Create, "lv_anim_create");
 
-   function lv_anim_del (arg1 : System.Address; arg2 : lv_anim_fp_t) return u_Bool;  -- ../lv_misc/lv_anim.h:100
-   pragma Import (C, lv_anim_del, "lv_anim_del");
+   function Anim_Del
+     (Arg1 : System.Address;
+      Arg2 : Anim_Fp_T) return U_Bool;
+   pragma Import (C, Anim_Del, "lv_anim_del");
 
-   function lv_anim_speed_to_time
-     (arg1 : uint16_t;
-      arg2 : int32_t;
-      arg3 : int32_t) return uint16_t;  -- ../lv_misc/lv_anim.h:109
-   pragma Import (C, lv_anim_speed_to_time, "lv_anim_speed_to_time");
+   function Anim_Speed_To_Time
+     (Arg1 : Uint16_T;
+      Arg2 : Int32_T;
+      Arg3 : Int32_T) return Uint16_T;
+   pragma Import (C, Anim_Speed_To_Time, "lv_anim_speed_to_time");
 
-   function lv_anim_path_linear (arg1 : access constant lv_anim_t) return int32_t;  -- ../lv_misc/lv_anim.h:116
-   pragma Import (C, lv_anim_path_linear, "lv_anim_path_linear");
+   function Anim_Path_Linear
+     (Arg1 : access constant Anim_T) return Int32_T;
+   pragma Import (C, Anim_Path_Linear, "lv_anim_path_linear");
 
-   function lv_anim_path_ease_in_out (arg1 : access constant lv_anim_t) return int32_t;  -- ../lv_misc/lv_anim.h:124
-   pragma Import (C, lv_anim_path_ease_in_out, "lv_anim_path_ease_in_out");
+   function Anim_Path_Ease_In_Out
+     (Arg1 : access constant Anim_T) return Int32_T;
+   pragma Import (C, Anim_Path_Ease_In_Out, "lv_anim_path_ease_in_out");
 
-   function lv_anim_path_step (arg1 : access constant lv_anim_t) return int32_t;  -- ../lv_misc/lv_anim.h:132
-   pragma Import (C, lv_anim_path_step, "lv_anim_path_step");
+   function Anim_Path_Step
+     (Arg1 : access constant Anim_T) return Int32_T;
+   pragma Import (C, Anim_Path_Step, "lv_anim_path_step");
 
-end LV.Anim;
+end Lv.Anim;

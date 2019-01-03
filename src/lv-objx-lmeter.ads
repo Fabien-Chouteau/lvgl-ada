@@ -1,57 +1,41 @@
 with Interfaces.C; use Interfaces.C;
-with LV.Style;
+with Lv.Style;
 
-package LV.Objx.Lmeter is
+package Lv.Objx.Lmeter is
 
    subtype Instance is Obj_T;
 
-   function create (Parent : Obj_T; Copy : Instance) return Instance;  -- lv_lmeter.h:55
-   pragma Import (C, create, "lv_lmeter_create");
+   function Create (Parent : Obj_T; Copy : Instance) return Instance;
+   pragma Import (C, Create, "lv_lmeter_create");
 
-   procedure set_value (Self : Instance; arg2 : int16_t);  -- lv_lmeter.h:66
-   pragma Import (C, set_value, "lv_lmeter_set_value");
+   procedure Set_Value (Self : Instance; Arg2 : Int16_T);
+   pragma Import (C, Set_Value, "lv_lmeter_set_value");
 
-   procedure set_range
-     (Self : Instance;
-      arg2 : int16_t;
-      arg3 : int16_t);  -- lv_lmeter.h:74
-   pragma Import (C, set_range, "lv_lmeter_set_range");
+   procedure Set_Range (Self : Instance; Arg2 : Int16_T; Arg3 : Int16_T);
+   pragma Import (C, Set_Range, "lv_lmeter_set_range");
 
-   procedure set_scale
-     (Self : Instance;
-      arg2 : uint16_t;
-      arg3 : uint8_t);  -- lv_lmeter.h:82
-   pragma Import (C, set_scale, "lv_lmeter_set_scale");
+   procedure Set_Scale (Self : Instance; Arg2 : Uint16_T; Arg3 : Uint8_T);
+   pragma Import (C, Set_Scale, "lv_lmeter_set_scale");
 
-   procedure set_style (Self : Instance; bg : access LV.Style.Style);  -- lv_lmeter.h:89
-   pragma Import (C, set_style, "lv_lmeter_set_style_inline");
+   procedure Set_Style (Self : Instance; Bg : access Lv.Style.Style);
+   pragma Import (C, Set_Style, "lv_lmeter_set_style_inline");
 
-   function get_value (Self : Instance) return int16_t;  -- lv_lmeter.h:103
-   pragma Import (C, get_value, "lv_lmeter_get_value");
+   function Get_Value (Self : Instance) return Int16_T;
+   pragma Import (C, Get_Value, "lv_lmeter_get_value");
 
-   function get_min_value (Self : Instance) return int16_t;  -- lv_lmeter.h:110
-   pragma Import (C, get_min_value, "lv_lmeter_get_min_value");
+   function Get_Min_Value (Self : Instance) return Int16_T;
+   pragma Import (C, Get_Min_Value, "lv_lmeter_get_min_value");
 
-   function get_max_value (Self : Instance) return int16_t;  -- lv_lmeter.h:117
-   pragma Import (C, get_max_value, "lv_lmeter_get_max_value");
+   function Get_Max_Value (Self : Instance) return Int16_T;
+   pragma Import (C, Get_Max_Value, "lv_lmeter_get_max_value");
 
-   function get_line_count (Self : Instance) return uint8_t;  -- lv_lmeter.h:124
-   pragma Import (C, get_line_count, "lv_lmeter_get_line_count");
+   function Get_Line_Count (Self : Instance) return Uint8_T;
+   pragma Import (C, Get_Line_Count, "lv_lmeter_get_line_count");
 
-   function get_scale_angle (Self : Instance) return uint16_t;  -- lv_lmeter.h:131
-   pragma Import (C, get_scale_angle, "lv_lmeter_get_scale_angle");
+   function Get_Scale_Angle (Self : Instance) return Uint16_T;
+   pragma Import (C, Get_Scale_Angle, "lv_lmeter_get_scale_angle");
 
-   function get_style (Self : Instance) return access LV.Style.Style;  -- lv_lmeter.h:138
-   pragma Import (C, get_style, "lv_lmeter_get_style_inline");
+   function Get_Style (Self : Instance) return access Lv.Style.Style;
+   pragma Import (C, Get_Style, "lv_lmeter_get_style_inline");
 
---  private
---     type lv_lmeter_ext_t is record
---        scale_angle : aliased uint16_t;  -- lv_lmeter.h:38
---        line_cnt : aliased sys_ustdint_h.uint8_t;  -- lv_lmeter.h:39
---        cur_value : aliased sys_ustdint_h.int16_t;  -- lv_lmeter.h:40
---        min_value : aliased sys_ustdint_h.int16_t;  -- lv_lmeter.h:41
---        max_value : aliased sys_ustdint_h.int16_t;  -- lv_lmeter.h:42
---     end record;
---     pragma Convention (C_Pass_By_Copy, lv_lmeter_ext_t);  -- lv_lmeter.h:43
-
-end LV.Objx.Lmeter;
+end Lv.Objx.Lmeter;

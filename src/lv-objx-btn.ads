@@ -1,134 +1,108 @@
 pragma Style_Checks (Off);
 
 with Interfaces.C; use Interfaces.C;
-with LV.Style;
+with Lv.Style;
 with Interfaces.C.Extensions;
 
-with LV.Objx.Cont;
+with Lv.Objx.Cont;
 
-package LV.Objx.Btn is
+package Lv.Objx.Btn is
 
    subtype Instance is Obj_T;
 
-   type state_t is
-     (STATE_REL,
-      STATE_PR,
-      STATE_TGL_REL,
-      STATE_TGL_PR,
-      STATE_INA,
-      STATE_NUM);
+   type State_T is
+     (State_Rel, State_Pr, State_Tgl_Rel, State_Tgl_Pr, State_Ina, State_Num);
 
-   for state_t use
-     (STATE_REL     => 0,
-      STATE_PR      => 1,
-      STATE_TGL_REL => 2,
-      STATE_TGL_PR  => 3,
-      STATE_INA     => 4,
-      STATE_NUM     => 5);
+   for State_T use
+     (State_Rel     => 0,
+      State_Pr      => 1,
+      State_Tgl_Rel => 2,
+      State_Tgl_Pr  => 3,
+      State_Ina     => 4,
+      State_Num     => 5);
 
-   type action_t is
-     (ACTION_CLICK,
-      ACTION_PR,
-      ACTION_LONG_PR,
-      ACTION_LONG_PR_REPEAT,
-      ACTION_NUM);
+   type Action_T is
+     (Action_Click,
+      Action_Pr,
+      Action_Long_Pr,
+      Action_Long_Pr_Repeat,
+      Action_Num);
 
-   for action_t use
-     (ACTION_CLICK          => 0,
-      ACTION_PR             => 1,
-      ACTION_LONG_PR        => 2,
-      ACTION_LONG_PR_REPEAT => 3,
-      ACTION_NUM            => 4);
+   for Action_T use
+     (Action_Click          => 0,
+      Action_Pr             => 1,
+      Action_Long_Pr        => 2,
+      Action_Long_Pr_Repeat => 3,
+      Action_Num            => 4);
 
-   subtype style_t is uint8_t;  -- lv_btn.h:89
+   subtype Style_T is Uint8_T;
 
-   function create (Parent : Obj_T; Copy : Obj_T) return Instance;  -- lv_btn.h:101
-   pragma Import (C, create, "lv_btn_create");
+   function Create (Parent : Obj_T; Copy : Obj_T) return Instance;
+   pragma Import (C, Create, "lv_btn_create");
 
-   procedure set_toggle (Self : Instance; arg2 : u_Bool);  -- lv_btn.h:112
-   pragma Import (C, set_toggle, "lv_btn_set_toggle");
+   procedure Set_Toggle (Self : Instance; Arg2 : U_Bool);
+   pragma Import (C, Set_Toggle, "lv_btn_set_toggle");
 
-   procedure set_state (Self : Instance; arg2 : state_t);  -- lv_btn.h:119
-   pragma Import (C, set_state, "lv_btn_set_state");
+   procedure Set_State (Self : Instance; Arg2 : State_T);
+   pragma Import (C, Set_State, "lv_btn_set_state");
 
-   procedure toggle (Self : Instance);  -- lv_btn.h:125
-   pragma Import (C, toggle, "lv_btn_toggle");
+   procedure Toggle (Self : Instance);
+   pragma Import (C, Toggle, "lv_btn_toggle");
 
-   procedure set_action
+   procedure Set_Action (Self : Instance; Arg2 : Action_T; Arg3 : Lv_Action_T);
+   pragma Import (C, Set_Action, "lv_btn_set_action");
+
+   procedure Set_Layout (Self : Instance; Layout : Lv.Objx.Cont.Lv_Layout_T);
+   pragma Import (C, Set_Layout, "lv_btn_set_layout_inline");
+
+   procedure Set_Fit (Self : Instance; Hor_En : U_Bool; Ver_En : U_Bool);
+   pragma Import (C, Set_Fit, "lv_btn_set_fit_inline");
+
+   procedure Set_Ink_In_Time (Self : Instance; Arg2 : Uint16_T);
+   pragma Import (C, Set_Ink_In_Time, "lv_btn_set_ink_in_time");
+
+   procedure Set_Ink_Wait_Time (Self : Instance; Arg2 : Uint16_T);
+   pragma Import (C, Set_Ink_Wait_Time, "lv_btn_set_ink_wait_time");
+
+   procedure Set_Ink_Out_Time (Self : Instance; Arg2 : Uint16_T);
+   pragma Import (C, Set_Ink_Out_Time, "lv_btn_set_ink_out_time");
+
+   procedure Set_Style
      (Self : Instance;
-      arg2 : action_t;
-      arg3 : lv_action_t);  -- lv_btn.h:132
-   pragma Import (C, set_action, "lv_btn_set_action");
+      Arg2 : Style_T;
+      Arg3 : access Lv.Style.Style);
+   pragma Import (C, Set_Style, "lv_btn_set_style");
 
-   procedure set_layout (Self : Instance; layout : LV.Objx.Cont.lv_layout_t);  -- lv_btn.h:139
-   pragma Import (C, set_layout, "lv_btn_set_layout_inline");
+   function Get_State (Self : Instance) return State_T;
+   pragma Import (C, Get_State, "lv_btn_get_state");
 
-   procedure set_fit
+   function Get_Toggle (Self : Instance) return U_Bool;
+   pragma Import (C, Get_Toggle, "lv_btn_get_toggle");
+
+   function Get_Action (Self : Instance; Arg2 : Action_T) return Lv_Action_T;
+   pragma Import (C, Get_Action, "lv_btn_get_action");
+
+   function Get_Layout (Self : Instance) return Lv.Objx.Cont.Lv_Layout_T;
+   pragma Import (C, Get_Layout, "lv_btn_get_layout_inline");
+
+   function Get_Hor_Fit (Self : Instance) return U_Bool;
+   pragma Import (C, Get_Hor_Fit, "lv_btn_get_hor_fit_inline");
+
+   function Get_Ver_Fit (Self : Instance) return U_Bool;
+   pragma Import (C, Get_Ver_Fit, "lv_btn_get_ver_fit_inline");
+
+   function Get_Ink_In_Time (Self : Instance) return Uint16_T;
+   pragma Import (C, Get_Ink_In_Time, "lv_btn_get_ink_in_time");
+
+   function Get_Ink_Wait_Time (Self : Instance) return Uint16_T;
+   pragma Import (C, Get_Ink_Wait_Time, "lv_btn_get_ink_wait_time");
+
+   function Get_Ink_Out_Time (Self : Instance) return Uint16_T;
+   pragma Import (C, Get_Ink_Out_Time, "lv_btn_get_ink_out_time");
+
+   function Get_Style
      (Self : Instance;
-      hor_en : u_Bool;
-      ver_en : u_Bool);  -- lv_btn.h:151
-   pragma Import (C, set_fit, "lv_btn_set_fit_inline");
+      Arg2 : Style_T) return access Lv.Style.Style;
+   pragma Import (C, Get_Style, "lv_btn_get_style");
 
-   procedure set_ink_in_time (Self : Instance; arg2 : uint16_t);  -- lv_btn.h:161
-   pragma Import (C, set_ink_in_time, "lv_btn_set_ink_in_time");
-
-   procedure set_ink_wait_time (Self : Instance; arg2 : uint16_t);  -- lv_btn.h:168
-   pragma Import (C, set_ink_wait_time, "lv_btn_set_ink_wait_time");
-
-   procedure set_ink_out_time (Self : Instance; arg2 : uint16_t);  -- lv_btn.h:175
-   pragma Import (C, set_ink_out_time, "lv_btn_set_ink_out_time");
-
-   procedure set_style
-     (Self : Instance;
-      arg2 : style_t;
-      arg3 : access LV.Style.Style);  -- lv_btn.h:183
-   pragma Import (C, set_style, "lv_btn_set_style");
-
-   function get_state (Self : Instance) return state_t;  -- lv_btn.h:194
-   pragma Import (C, get_state, "lv_btn_get_state");
-
-   function get_toggle (Self : Instance) return u_Bool;  -- lv_btn.h:201
-   pragma Import (C, get_toggle, "lv_btn_get_toggle");
-
-   function get_action (Self : Instance; arg2 : action_t) return lv_action_t;  -- lv_btn.h:208
-   pragma Import (C, get_action, "lv_btn_get_action");
-
-   function get_layout (Self : Instance) return LV.Objx.Cont.lv_layout_t;  -- lv_btn.h:215
-   pragma Import (C, get_layout, "lv_btn_get_layout_inline");
-
-   function get_hor_fit (Self : Instance) return u_Bool;  -- lv_btn.h:225
-   pragma Import (C, get_hor_fit, "lv_btn_get_hor_fit_inline");
-
-   function get_ver_fit (Self : Instance) return u_Bool;  -- lv_btn.h:235
-   pragma Import (C, get_ver_fit, "lv_btn_get_ver_fit_inline");
-
-   function get_ink_in_time (Self : Instance) return uint16_t;  -- lv_btn.h:245
-   pragma Import (C, get_ink_in_time, "lv_btn_get_ink_in_time");
-
-   function get_ink_wait_time (Self : Instance) return uint16_t;  -- lv_btn.h:252
-   pragma Import (C, get_ink_wait_time, "lv_btn_get_ink_wait_time");
-
-   function get_ink_out_time (Self : Instance) return uint16_t;  -- lv_btn.h:259
-   pragma Import (C, get_ink_out_time, "lv_btn_get_ink_out_time");
-
-   function get_style (Self : Instance; arg2 : style_t) return access LV.Style.Style;  -- lv_btn.h:267
-   pragma Import (C, get_style, "lv_btn_get_style");
-
---  private
---     type lv_btn_ext_t_actions_array is array (0 .. 3) of lv_obj_h.lv_action_t;
---     type lv_btn_ext_t_styles_array is array (0 .. 4) of access lv_style_h.lv_style_t;
---     type lv_btn_ext_t is record
---        cont : aliased lv_cont_h.lv_cont_ext_t;  -- lv_btn.h:67
---        actions : lv_btn_ext_t_actions_array;  -- lv_btn.h:69
---        styles : lv_btn_ext_t_styles_array;  -- lv_btn.h:70
---        state : aliased lv_btn_state_t;  -- lv_btn.h:71
---        ink_in_time : aliased uint16_t;  -- lv_btn.h:73
---        ink_wait_time : aliased sys_ustdint_h.uint16_t;  -- lv_btn.h:74
---        ink_out_time : aliased sys_ustdint_h.uint16_t;  -- lv_btn.h:75
---        toggle : Extensions.Unsigned_1;  -- lv_btn.h:77
---        long_pr_action_executed : Extensions.Unsigned_1;  -- lv_btn.h:78
---     end record;
---     pragma Convention (C_Pass_By_Copy, lv_btn_ext_t);
---     pragma Pack (lv_btn_ext_t);  -- lv_btn.h:79
-
-end LV.Objx.Btn;
+end Lv.Objx.Btn;

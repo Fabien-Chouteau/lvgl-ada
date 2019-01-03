@@ -40,7 +40,6 @@ package body Test_Theme_1 is
    LV_VER_RES : constant := 480; --  FIXME: This should be in the conf
 
    subtype C is Character;
-
    SYMBOL_AUDIO      : constant String := C'Val (16#EF#) & C'Val (16#A0#) & C'Val (16#80#);
    SYMBOL_VIDEO      : constant String := C'Val (16#EF#) & C'Val (16#A0#) & C'Val (16#81#);
    SYMBOL_LIST       : constant String := C'Val (16#EF#) & C'Val (16#A0#) & C'Val (16#82#);
@@ -247,7 +246,7 @@ package body Test_Theme_1 is
       Set_Size (Ch, W / 3, LV_VER_RES / 3);
       Set_Pos (Ch, LV_DPI / 10, LV_DPI / 10);
 
-      S1 := Chart.add_series (Ch, LV.Color.LV_COLOR_RED);
+      S1 := Chart.add_series (Ch, LV.Color.COLOR_RED);
       Chart.set_next (Ch, S1, 30);
       Chart.set_next (Ch, S1, 20);
       Chart.set_next (Ch, S1, 10);
