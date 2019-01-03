@@ -36,7 +36,7 @@ package Lv.Objx.Win is
    procedure Set_Btn_Size (Self : Instance; Arg2 : Lv.Area.Coord_T);
    pragma Import (C, Set_Btn_Size, "lv_win_set_btn_size");
 
-   procedure Set_Layout (Self : Instance; Arg2 : Lv.Objx.Cont.Lv_Layout_T);
+   procedure Set_Layout (Self : Instance; Arg2 : Lv.Objx.Cont.Layout_T);
    pragma Import (C, Set_Layout, "lv_win_set_layout");
 
    procedure Set_Sb_Mode (Self : Instance; Arg2 : Lv.Objx.Page.Lv_Sb_Mode_T);
@@ -60,7 +60,7 @@ package Lv.Objx.Win is
    function Get_From_Btn (Ctrl_Btn : Btn.Instance) return Instance;
    pragma Import (C, Get_From_Btn, "lv_win_get_from_btn");
 
-   function Get_Layout (Self : Instance) return Lv.Objx.Cont.Lv_Layout_T;
+   function Get_Layout (Self : Instance) return Lv.Objx.Cont.Layout_T;
    pragma Import (C, Get_Layout, "lv_win_get_layout");
 
    function Get_Sb_Mode (Self : Instance) return Lv.Objx.Page.Lv_Sb_Mode_T;

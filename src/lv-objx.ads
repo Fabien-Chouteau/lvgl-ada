@@ -20,7 +20,7 @@ package Lv.Objx is
    Res_Inv : constant := 0;
    Res_Ok  : constant := 1;
 
-   type Lv_Align_T is
+   type Align_T is
      (Align_Center,
       Align_In_Top_Left,
       Align_In_Top_Mid,
@@ -41,9 +41,10 @@ package Lv.Objx is
       Align_Out_Left_Bottom,
       Align_Out_Right_Top,
       Align_Out_Right_Mid,
-      Align_Out_Right_Bottom);
+      Align_Out_Right_Bottom)
+   with Size => 8;
 
-   for Lv_Align_T use
+   for Align_T use
      (Align_Center           => 0,
       Align_In_Top_Left      => 1,
       Align_In_Top_Mid       => 2,
@@ -152,7 +153,7 @@ package Lv.Objx is
    procedure Align
      (Arg1 : Obj_T;
       Arg2 : Obj_T;
-      Arg3 : Lv_Align_T;
+      Arg3 : Align_T;
       Arg4 : Lv.Area.Coord_T;
       Arg5 : Lv.Area.Coord_T);
    pragma Import (C, Align, "lv_obj_align");

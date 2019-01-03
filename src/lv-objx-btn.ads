@@ -11,7 +11,8 @@ package Lv.Objx.Btn is
    subtype Instance is Obj_T;
 
    type State_T is
-     (State_Rel, State_Pr, State_Tgl_Rel, State_Tgl_Pr, State_Ina, State_Num);
+     (State_Rel, State_Pr, State_Tgl_Rel, State_Tgl_Pr, State_Ina, State_Num)
+     with Size => 8;
 
    for State_T use
      (State_Rel     => 0,
@@ -26,7 +27,8 @@ package Lv.Objx.Btn is
       Action_Pr,
       Action_Long_Pr,
       Action_Long_Pr_Repeat,
-      Action_Num);
+      Action_Num)
+     with Size => 8;
 
    for Action_T use
      (Action_Click          => 0,
@@ -52,7 +54,7 @@ package Lv.Objx.Btn is
    procedure Set_Action (Self : Instance; Arg2 : Action_T; Arg3 : Lv_Action_T);
    pragma Import (C, Set_Action, "lv_btn_set_action");
 
-   procedure Set_Layout (Self : Instance; Layout : Lv.Objx.Cont.Lv_Layout_T);
+   procedure Set_Layout (Self : Instance; Layout : Lv.Objx.Cont.Layout_T);
    pragma Import (C, Set_Layout, "lv_btn_set_layout_inline");
 
    procedure Set_Fit (Self : Instance; Hor_En : U_Bool; Ver_En : U_Bool);
@@ -82,7 +84,7 @@ package Lv.Objx.Btn is
    function Get_Action (Self : Instance; Arg2 : Action_T) return Lv_Action_T;
    pragma Import (C, Get_Action, "lv_btn_get_action");
 
-   function Get_Layout (Self : Instance) return Lv.Objx.Cont.Lv_Layout_T;
+   function Get_Layout (Self : Instance) return Lv.Objx.Cont.Layout_T;
    pragma Import (C, Get_Layout, "lv_btn_get_layout_inline");
 
    function Get_Hor_Fit (Self : Instance) return U_Bool;

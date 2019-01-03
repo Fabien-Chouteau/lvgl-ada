@@ -16,7 +16,7 @@ package Lv.Objx.Textarea is
 
    Lv_Ta_Cursor_Last : constant := (16#7FFF#);
 
-   type Lv_Cursor_Type_T is
+   type Cursor_Type_T is
      (Cursor_None,
       Cursor_Line,
       Cursor_Block,
@@ -25,7 +25,7 @@ package Lv.Objx.Textarea is
       Cursor_Hidden) with
         Size => 8;
 
-   for Lv_Cursor_Type_T use
+   for Cursor_Type_T use
      (Cursor_None      => 0,
       Cursor_Line      => 1,
       Cursor_Block     => 2,
@@ -33,7 +33,7 @@ package Lv.Objx.Textarea is
       Cursor_Underline => 4,
       Cursor_Hidden    => 8);
 
-   type Lv_Ta_Style_T is (Style_Bg, Style_Sb, Style_Cursor) with
+   type Ta_Style_T is (Style_Bg, Style_Sb, Style_Cursor) with
         Size => 8;
 
    function Create (Par : Obj_T; Copy : Obj_T) return Textarea;
@@ -54,7 +54,7 @@ package Lv.Objx.Textarea is
    procedure Set_Cursor_Pos (Self : Textarea; Arg2 : Int16_T);
    pragma Import (C, Set_Cursor_Pos, "lv_ta_set_cursor_pos");
 
-   procedure Set_Cursor_Type (Self : Textarea; Arg2 : Lv_Cursor_Type_T);
+   procedure Set_Cursor_Type (Self : Textarea; Arg2 : Cursor_Type_T);
    pragma Import (C, Set_Cursor_Type, "lv_ta_set_cursor_type");
 
    procedure Set_Pwd_Mode (Self : Textarea; Arg2 : U_Bool);
@@ -82,7 +82,7 @@ package Lv.Objx.Textarea is
 
    procedure Set_Style
      (Self : Textarea;
-      Arg2 : Lv_Ta_Style_T;
+      Arg2 : Ta_Style_T;
       Arg3 : Lv.Style.Style);
    pragma Import (C, Set_Style, "lv_ta_set_style");
 
@@ -98,7 +98,7 @@ package Lv.Objx.Textarea is
    function Get_Cursor_Show (Self : Textarea) return U_Bool;
    pragma Import (C, Get_Cursor_Show, "lv_ta_get_cursor_show");
 
-   function Get_Cursor_Type (Self : Textarea) return Lv_Cursor_Type_T;
+   function Get_Cursor_Type (Self : Textarea) return Cursor_Type_T;
    pragma Import (C, Get_Cursor_Type, "lv_ta_get_cursor_type");
 
    function Get_Pwd_Mode (Self : Textarea) return U_Bool;
@@ -122,7 +122,8 @@ package Lv.Objx.Textarea is
 
    function Get_Style
      (Self : Textarea;
-      Arg2 : Lv_Ta_Style_T) return Lv.Style.Style;
+      Arg2 : Ta_Style_T)
+      return Lv.Style.Style;
    pragma Import (C, Get_Style, "lv_ta_get_style");
 
    procedure Cursor_Right (Self : Textarea);
