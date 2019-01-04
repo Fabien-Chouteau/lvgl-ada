@@ -11,8 +11,13 @@ package Lv.Objx.Btn is
    subtype Instance is Obj_T;
 
    type State_T is
-     (State_Rel, State_Pr, State_Tgl_Rel, State_Tgl_Pr, State_Ina, State_Num)
-     with Size => 8;
+     (State_Rel,
+      State_Pr,
+      State_Tgl_Rel,
+      State_Tgl_Pr,
+      State_Ina,
+      State_Num) with
+        Size => 8;
 
    for State_T use
      (State_Rel     => 0,
@@ -27,8 +32,8 @@ package Lv.Objx.Btn is
       Action_Pr,
       Action_Long_Pr,
       Action_Long_Pr_Repeat,
-      Action_Num)
-     with Size => 8;
+      Action_Num) with
+        Size => 8;
 
    for Action_T use
      (Action_Click          => 0,

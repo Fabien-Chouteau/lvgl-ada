@@ -41,8 +41,8 @@ package Lv.Objx is
       Align_Out_Left_Bottom,
       Align_Out_Right_Top,
       Align_Out_Right_Mid,
-      Align_Out_Right_Bottom)
-   with Size => 8;
+      Align_Out_Right_Bottom) with
+        Size => 8;
 
    for Align_T use
      (Align_Center           => 0,
@@ -228,14 +228,14 @@ package Lv.Objx is
       Arg5 : access procedure (Arg1 : Obj_T));
    pragma Import (C, Animate, "lv_obj_animate");
 
-   function Lv_Scr_Act return Obj_T;
-   pragma Import (C, Lv_Scr_Act, "lv_scr_act");
+   function Scr_Act return Obj_T;
+   pragma Import (C, Scr_Act, "lv_scr_act");
 
-   function Lv_Layer_Top return Obj_T;
-   pragma Import (C, Lv_Layer_Top, "lv_layer_top");
+   function Layer_Top return Obj_T;
+   pragma Import (C, Layer_Top, "lv_layer_top");
 
-   function Lv_Layer_Sys return Obj_T;
-   pragma Import (C, Lv_Layer_Sys, "lv_layer_sys");
+   function Layer_Sys return Obj_T;
+   pragma Import (C, Layer_Sys, "lv_layer_sys");
 
    function Get_Screen (Arg1 : Obj_T) return Obj_T;
    pragma Import (C, Get_Screen, "lv_obj_get_screen");

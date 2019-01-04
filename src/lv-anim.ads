@@ -6,13 +6,10 @@ with Interfaces.C.Extensions;
 
 package Lv.Anim is
 
-   type Anim_Path_T is access function
-     (Arg1 : System.Address) return Int32_T;
+   type Anim_Path_T is access function (Arg1 : System.Address) return Int32_T;
    pragma Convention (C, Anim_Path_T);
 
-   type Anim_Fp_T is access procedure
-     (Arg1 : System.Address;
-      Arg2 : Int32_T);
+   type Anim_Fp_T is access procedure (Arg1 : System.Address; Arg2 : Int32_T);
    pragma Convention (C, Anim_Fp_T);
 
    type Anim_Cb_T is access procedure (Arg1 : System.Address);
@@ -45,9 +42,7 @@ package Lv.Anim is
    procedure Anim_Create (Arg1 : access Anim_T);
    pragma Import (C, Anim_Create, "lv_anim_create");
 
-   function Anim_Del
-     (Arg1 : System.Address;
-      Arg2 : Anim_Fp_T) return U_Bool;
+   function Anim_Del (Arg1 : System.Address; Arg2 : Anim_Fp_T) return U_Bool;
    pragma Import (C, Anim_Del, "lv_anim_del");
 
    function Anim_Speed_To_Time
@@ -56,16 +51,14 @@ package Lv.Anim is
       Arg3 : Int32_T) return Uint16_T;
    pragma Import (C, Anim_Speed_To_Time, "lv_anim_speed_to_time");
 
-   function Anim_Path_Linear
-     (Arg1 : access constant Anim_T) return Int32_T;
+   function Anim_Path_Linear (Arg1 : access constant Anim_T) return Int32_T;
    pragma Import (C, Anim_Path_Linear, "lv_anim_path_linear");
 
    function Anim_Path_Ease_In_Out
      (Arg1 : access constant Anim_T) return Int32_T;
    pragma Import (C, Anim_Path_Ease_In_Out, "lv_anim_path_ease_in_out");
 
-   function Anim_Path_Step
-     (Arg1 : access constant Anim_T) return Int32_T;
+   function Anim_Path_Step (Arg1 : access constant Anim_T) return Int32_T;
    pragma Import (C, Anim_Path_Step, "lv_anim_path_step");
 
 end Lv.Anim;

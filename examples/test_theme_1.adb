@@ -1,3 +1,5 @@
+with Ada.Text_IO;
+
 with LV;      use LV;
 with LV.Area;
 with LV.Objx; use LV.Objx;
@@ -30,6 +32,8 @@ with LV.Objx.Mbox;
 with Interfaces.C.Strings; use Interfaces.C.Strings;
 with System;
 with LV.Color;
+
+with LV.HAL.Disp;
 
 package body Test_Theme_1 is
 
@@ -388,6 +392,7 @@ package body Test_Theme_1 is
       Tab2 : Page.Instance;
       Tab3 : Page.Instance;
    begin
+
       LV.Theme.Set_Current (T);
 
       Scr := Cont.Create (No_Obj, No_Obj);

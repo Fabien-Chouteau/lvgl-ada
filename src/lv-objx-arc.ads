@@ -18,10 +18,10 @@ package Lv.Objx.Arc is
    -- Setter functions --
    ----------------------
 
-   --  Set the start and end angles of an arc. 0 deg: bottom, 90 deg: right etc.
-   --  @param arc pointer to an arc object
-   --  @param start the start angle [0..360]
-   --  @param end the end angle [0..360]
+--  Set the start and end angles of an arc. 0 deg: bottom, 90 deg: right etc.
+--  @param arc pointer to an arc object
+--  @param start the start angle [0..360]
+--  @param end the end angle [0..360]
    procedure Set_Angles (Self : Instance; Start : Uint16_T; End_P : Uint16_T);
 
    -- Set a style of a arc.
@@ -59,11 +59,11 @@ package Lv.Objx.Arc is
    -- Imports --
    -------------
 
-   pragma Import (C, Create,          "lv_arc_create");
-   pragma Import (C, Set_Angles,      "lv_arc_set_angles");
-   pragma Import (C, Set_Style,       "lv_arc_set_style");
+   pragma Import (C, Create, "lv_arc_create");
+   pragma Import (C, Set_Angles, "lv_arc_set_angles");
+   pragma Import (C, Set_Style, "lv_arc_set_style");
    pragma Import (C, Get_Angle_Start, "lv_arc_get_angle_start");
-   pragma Import (C, Get_Angle_End,   "lv_arc_get_angle_end");
-   pragma Import (C, Get_Style,       "lv_arc_get_style");
+   pragma Import (C, Get_Angle_End, "lv_arc_get_angle_end");
+   pragma Import (C, Get_Style, "lv_arc_get_style");
 
 end Lv.Objx.Arc;

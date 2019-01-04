@@ -19,8 +19,8 @@ package Lv.Objx.Page is
       Sb_Mode_Auto,  --  Show scrollbars when the scrollable container is large enough to be scrolled
       Sb_Mode_Hide,  --  Hide the scroll bar temporally
       Sb_Mode_Unhide --  Unhide the previously hidden scrollbar. Recover it's type too
-     )
-   with Size => 8;
+      ) with
+        Size => 8;
 
    for Lv_Sb_Mode_T use
      (Sb_Mode_Off    => 0,
@@ -71,9 +71,7 @@ package Lv.Objx.Page is
    procedure Set_Scrl_Height (Self : Instance; H : Lv.Area.Coord_T);
    pragma Import (C, Set_Scrl_Height, "lv_page_set_scrl_height_inline");
 
-   procedure Set_Scrl_Layout
-     (Self   : Instance;
-      Layout : Lv.Objx.Cont.Layout_T);
+   procedure Set_Scrl_Layout (Self : Instance; Layout : Lv.Objx.Cont.Layout_T);
    pragma Import (C, Set_Scrl_Layout, "lv_page_set_scrl_layout_inline");
 
    procedure Set_Style

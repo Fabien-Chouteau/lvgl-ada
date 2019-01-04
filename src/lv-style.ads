@@ -23,9 +23,7 @@ package Lv.Style is
    procedure Style_Init;
    pragma Import (C, Style_Init, "lv_style_init");
 
-   procedure Style_Copy
-     (Dest : access Style;
-      Src  : access Style);
+   procedure Style_Copy (Dest : access Style; Src : access Style);
    pragma Import (C, Style_Copy, "lv_style_copy");
 
    procedure Style_Mix
@@ -35,8 +33,7 @@ package Lv.Style is
       Ratio  : Uint16_T);
    pragma Import (C, Style_Mix, "lv_style_mix");
 
-   function Style_Anim_Create
-     (Anim_P : Style_Anim) return System.Address;
+   function Style_Anim_Create (Anim_P : Style_Anim) return System.Address;
    pragma Import (C, Style_Anim_Create, "lv_style_anim_create");
 
    Style_Scr : constant access constant Style;
@@ -56,46 +53,52 @@ package Lv.Style is
 private
    type Style is new Uint32_T; --  FIXME: proper style mapping
 
-   LV_Style_Scr : aliased Style;
-   pragma Import (C, LV_Style_Scr, "lv_style_scr");
-   LV_Style_Transp : aliased Style;
-   pragma Import (C, LV_Style_Transp, "lv_style_transp");
-   LV_Style_Transp_Fit : aliased Style;
-   pragma Import (C, LV_Style_Transp_Fit, "lv_style_transp_fit");
-   LV_Style_Transp_Tight : aliased Style;
-   pragma Import (C, LV_Style_Transp_Tight, "lv_style_transp_tight");
-   LV_Style_Plain : aliased Style;
-   pragma Import (C, LV_Style_Plain, "lv_style_plain");
-   LV_Style_Plain_Color : aliased Style;
-   pragma Import (C, LV_Style_Plain_Color, "lv_style_plain_color");
-   LV_Style_Pretty : aliased Style;
-   pragma Import (C, LV_Style_Pretty, "lv_style_pretty");
-   LV_Style_Pretty_Color : aliased Style;
-   pragma Import (C, LV_Style_Pretty_Color, "lv_style_pretty_color");
-   LV_Style_Btn_Rel : aliased Style;
-   pragma Import (C, LV_Style_Btn_Rel, "lv_style_btn_rel");
-   LV_Style_Btn_Pr : aliased Style;
-   pragma Import (C, LV_Style_Btn_Pr, "lv_style_btn_pr");
-   LV_Style_Btn_Tgl_Rel : aliased Style;
-   pragma Import (C, LV_Style_Btn_Tgl_Rel, "lv_style_btn_tgl_rel");
-   LV_Style_Btn_Tgl_Pr : aliased Style;
-   pragma Import (C, LV_Style_Btn_Tgl_Pr, "lv_style_btn_tgl_pr");
-   LV_Style_Btn_Ina : aliased Style;
-   pragma Import (C, LV_Style_Btn_Ina, "lv_style_btn_ina");
+   Lv_Style_Scr : aliased Style;
+   pragma Import (C, Lv_Style_Scr, "lv_style_scr");
+   Lv_Style_Transp : aliased Style;
+   pragma Import (C, Lv_Style_Transp, "lv_style_transp");
+   Lv_Style_Transp_Fit : aliased Style;
+   pragma Import (C, Lv_Style_Transp_Fit, "lv_style_transp_fit");
+   Lv_Style_Transp_Tight : aliased Style;
+   pragma Import (C, Lv_Style_Transp_Tight, "lv_style_transp_tight");
+   Lv_Style_Plain : aliased Style;
+   pragma Import (C, Lv_Style_Plain, "lv_style_plain");
+   Lv_Style_Plain_Color : aliased Style;
+   pragma Import (C, Lv_Style_Plain_Color, "lv_style_plain_color");
+   Lv_Style_Pretty : aliased Style;
+   pragma Import (C, Lv_Style_Pretty, "lv_style_pretty");
+   Lv_Style_Pretty_Color : aliased Style;
+   pragma Import (C, Lv_Style_Pretty_Color, "lv_style_pretty_color");
+   Lv_Style_Btn_Rel : aliased Style;
+   pragma Import (C, Lv_Style_Btn_Rel, "lv_style_btn_rel");
+   Lv_Style_Btn_Pr : aliased Style;
+   pragma Import (C, Lv_Style_Btn_Pr, "lv_style_btn_pr");
+   Lv_Style_Btn_Tgl_Rel : aliased Style;
+   pragma Import (C, Lv_Style_Btn_Tgl_Rel, "lv_style_btn_tgl_rel");
+   Lv_Style_Btn_Tgl_Pr : aliased Style;
+   pragma Import (C, Lv_Style_Btn_Tgl_Pr, "lv_style_btn_tgl_pr");
+   Lv_Style_Btn_Ina : aliased Style;
+   pragma Import (C, Lv_Style_Btn_Ina, "lv_style_btn_ina");
 
-   Style_Scr          : constant access constant Style := LV_Style_Scr'Access;
-   Style_Transp       : constant access constant Style := LV_Style_Transp'Access;
-   Style_Transp_Fit   : constant access constant Style := LV_Style_Transp_Fit'Access;
-   Style_Transp_Tight : constant access constant Style := LV_Style_Transp_Tight'Access;
-   Style_Plain        : constant access constant Style := LV_Style_Plain'Access;
-   Style_Plain_Color  : constant access constant Style := LV_Style_Plain_Color'Access;
-   Style_Pretty       : constant access constant Style := LV_Style_Pretty'Access;
-   Style_Pretty_Color : constant access constant Style := LV_Style_Pretty_Color'Access;
-   Style_Btn_Rel      : constant access constant Style := LV_Style_Btn_Rel'Access;
-   Style_Btn_Pr       : constant access constant Style := LV_Style_Btn_Pr'Access;
-   Style_Btn_Tgl_Rel  : constant access constant Style := LV_Style_Btn_Tgl_Rel'Access;
-   Style_Btn_Tgl_Pr   : constant access constant Style := LV_Style_Btn_Tgl_Pr'Access;
-   Style_Btn_Ina      : constant access constant Style := LV_Style_Btn_Ina'Access;
+   Style_Scr        : constant access constant Style := Lv_Style_Scr'Access;
+   Style_Transp     : constant access constant Style := Lv_Style_Transp'Access;
+   Style_Transp_Fit : constant access constant Style :=
+     Lv_Style_Transp_Fit'Access;
+   Style_Transp_Tight : constant access constant Style :=
+     Lv_Style_Transp_Tight'Access;
+   Style_Plain       : constant access constant Style := Lv_Style_Plain'Access;
+   Style_Plain_Color : constant access constant Style :=
+     Lv_Style_Plain_Color'Access;
+   Style_Pretty : constant access constant Style := Lv_Style_Pretty'Access;
+   Style_Pretty_Color : constant access constant Style :=
+     Lv_Style_Pretty_Color'Access;
+   Style_Btn_Rel : constant access constant Style := Lv_Style_Btn_Rel'Access;
+   Style_Btn_Pr : constant access constant Style := Lv_Style_Btn_Pr'Access;
+   Style_Btn_Tgl_Rel : constant access constant Style :=
+     Lv_Style_Btn_Tgl_Rel'Access;
+   Style_Btn_Tgl_Pr : constant access constant Style :=
+     Lv_Style_Btn_Tgl_Pr'Access;
+   Style_Btn_Ina : constant access constant Style := Lv_Style_Btn_Ina'Access;
 
    type Style_Anim is new System.Address;
 

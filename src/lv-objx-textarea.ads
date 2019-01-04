@@ -122,8 +122,7 @@ package Lv.Objx.Textarea is
 
    function Get_Style
      (Self : Textarea;
-      Arg2 : Ta_Style_T)
-      return Lv.Style.Style;
+      Arg2 : Ta_Style_T) return Lv.Style.Style;
    pragma Import (C, Get_Style, "lv_ta_get_style");
 
    procedure Cursor_Right (Self : Textarea);

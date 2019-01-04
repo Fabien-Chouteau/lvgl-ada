@@ -22,7 +22,8 @@ package Lv.Objx.Cont is
       Layout_Row_B,  --  Row bottom align
       Layout_Pretty, --  Put as many object as possible in row and begin a new row
       Layout_Grid    --  Align same-sized object into a grid
-     ) with Size => 8;
+      ) with
+        Size => 8;
 
    for Layout_T use
      (Layout_Off    => 0,

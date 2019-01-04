@@ -231,7 +231,7 @@ package body Ada_Test is
 --        style_tv_btn_pr.c_body.border.width := 0;
 --        style_tv_btn_pr.text.color := LV_COLOR_GRAY;
 
-      TV := Tabview.Create (lv_scr_act, No_Obj);
+      TV := Tabview.Create (scr_act, No_Obj);
 
       Tab1 := Tabview.Add_Tab (TV, New_String ("Write"));
       Tab2 := Tabview.Add_Tab (TV, New_String ("List"));
