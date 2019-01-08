@@ -5,8 +5,8 @@ package Lv.Hal.Tick is
    procedure Inc (Tick_Period : Uint32_T);
    pragma Import (C, Inc, "lv_tick_inc");
 
-   -- Get the elapsed milliseconds since start up
-   -- @return the elapsed milliseconds
+   --  Get the elapsed milliseconds since start up
+   --  @return the elapsed milliseconds
    function Get return Uint32_T;
    pragma Import (C, Get, "lv_tick_get");
 

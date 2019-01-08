@@ -16,7 +16,7 @@ package Lv.Objx.Roller is
       Options : Interfaces.C.Strings.chars_ptr);
    pragma Import (C, Set_Options, "lv_roller_set_options_inline");
 
-   procedure Set_Selected (Self : Instance; Arg2 : Uint16_T; Arg3 : U_Bool);
+   procedure Set_Selected (Self : Instance; Set_Opt : Uint16_T; Anim_En : U_Bool);
    pragma Import (C, Set_Selected, "lv_roller_set_selected");
 
    procedure Set_Action (Self : Instance; Action : Lv_Action_T);

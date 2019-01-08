@@ -1,6 +1,4 @@
-with Interfaces.C; use Interfaces.C;
 with System;
-with Interfaces.C.Extensions;
 
 package Lv.Tasks is
 

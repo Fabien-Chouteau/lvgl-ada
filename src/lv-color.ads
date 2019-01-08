@@ -1,6 +1,5 @@
 pragma Style_Checks (Off);
 
-with Interfaces.C; use Interfaces.C;
 with Interfaces.C.Extensions;
 
 package Lv.Color is

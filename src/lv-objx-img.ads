@@ -1,6 +1,5 @@
-with Interfaces.C; use Interfaces.C;
+with Interfaces.C;
 with System;
-with Interfaces.C.Extensions;
 with Interfaces.C.Strings;
 
 package Lv.Objx.Img is
