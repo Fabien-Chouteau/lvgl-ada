@@ -34,6 +34,8 @@ with System;
 with LV.Color;
 
 with LV.HAL.Disp;
+with Lv.Theme;
+with Lv.Font;
 
 package body Test_Theme_1 is
 
@@ -107,6 +109,80 @@ package body Test_Theme_1 is
    Points : constant array (Natural range <>) of LV.Area.Point_T
      := ((0, 0), (LV_HOR_RES / 5, 0))
        with Convention => C;
+
+   Theme_Roller : Roller.Instance;
+
+   procedure Create_Theme_Tab (Parent : Page.Instance);
+   procedure Create_Tab1 (Parent : Page.Instance);
+   procedure Create_Tab2 (Parent : Page.Instance);
+   procedure Create_Tab3 (Parent : Page.Instance);
+
+   procedure Init_Themes (Hue : Lv.Theme.Hue_T);
+
+   function Roller_Action (Arg1 : Obj_T) return Lv_Res_T
+     with Convention => C;
+
+   function Slider_Action (Arg1 : Obj_T) return Lv_Res_T
+     with Convention => C;
+
+   procedure Init_Themes (Hue : Lv.Theme.Hue_T) is
+      Unused : Lv.Theme.Theme;
+   begin
+      Unused := Lv.Theme.Default_Init (Hue, Lv.Font.No_Font);
+      Unused := Lv.Theme.Material_Init (Hue, Lv.Font.No_Font);
+      Unused := Lv.Theme.Mono_Init (Hue, Lv.Font.No_Font);
+      Unused := Lv.Theme.Alien_Init (Hue, Lv.Font.No_Font);
+      Unused := Lv.Theme.Nemo_Init (Hue, Lv.Font.No_Font);
+      Unused := Lv.Theme.Night_Init (Hue, Lv.Font.No_Font);
+      Unused := Lv.Theme.Zen_Init (Hue, Lv.Font.No_Font);
+   end Init_Themes;
+
+   function Roller_Action (Arg1 : Obj_T) return Lv_Res_T is
+   begin
+      case Roller.Get_Selected (Arg1) is
+         when 0       => Lv.Theme.Set_Current (Lv.Theme.Get_Default);
+         when 1       => Lv.Theme.Set_Current (Lv.Theme.Get_Material);
+         when 2       => Lv.Theme.Set_Current (Lv.Theme.Get_Mono);
+         when 3       => Lv.Theme.Set_Current (Lv.Theme.Get_Alien);
+         when 4       => Lv.Theme.Set_Current (Lv.Theme.Get_Night);
+         when 5       => Lv.Theme.Set_Current (Lv.Theme.Get_Zen);
+         when others  => Lv.Theme.Set_Current (Lv.Theme.Get_Nemo);
+      end case;
+
+      return Res_Ok;
+   end Roller_Action;
+
+   function Slider_Action (Arg1 : Obj_T) return Lv_Res_T is
+   begin
+      Init_Themes (Uint16_T (Slider.Get_Value (Arg1)));
+      return Roller_Action (Theme_Roller);
+   end Slider_Action;
+
+   procedure Create_Theme_Tab (Parent : Page.Instance) is
+      TH  : constant Theme.Theme := Theme.Get_Current;
+      pragma Unreferenced (TH);
+      Slide : Slider.Instance;
+   begin
+      Page.Set_Scrl_Layout (Parent, Cont.Layout_Pretty);
+
+      Theme_Roller := Roller.Create (Parent, No_Obj);
+      Roller.Set_Options (Theme_Roller, New_String ("Default" & ASCII.LF &
+                                           "Material" & ASCII.LF &
+                                           "Mono" & ASCII.LF &
+                                           "Alien" & ASCII.LF &
+                                           "Night" & ASCII.LF &
+                                           "Zen" & ASCII.LF &
+                                           "Nemo"));
+      Roller.Set_Selected (Theme_Roller, 4, 0);
+      Roller.Set_Visible_Row_Count (Theme_Roller, 3);
+      Roller.Set_Action (Theme_Roller, Roller_Action'Access);
+
+      Slide := Slider.Create (Parent, No_Obj);
+      Slider.Set_Action (Slide, Slider_Action'Access);
+      Slider.Set_Range (Slide, 0, 360);
+      Slider.Set_Value (Slide, 70);
+
+   end Create_Theme_Tab;
 
    procedure Create_Tab1 (Parent : Page.Instance) is
       TH  : constant Theme.Theme :=  Theme.Get_current;
@@ -385,15 +461,16 @@ package body Test_Theme_1 is
       set_Top (Box, 1);
    end Create_Tab3;
 
-   procedure Init (T : LV.Theme.Theme) is
+   procedure Init is
       Scr  : Cont.Instance;
       TV   : Tabview.Instance;
       Tab1 : Page.Instance;
       Tab2 : Page.Instance;
       Tab3 : Page.Instance;
+      Theme_Tab : Page.Instance;
    begin
-
-      LV.Theme.Set_Current (T);
+      Init_Themes (220);
+      Lv.Theme.Set_Current (Lv.Theme.Get_Night);
 
       Scr := Cont.Create (No_Obj, No_Obj);
       Scr_Load (Scr);
@@ -403,10 +480,12 @@ package body Test_Theme_1 is
       TV := Tabview.Create (Scr, No_Obj);
       Set_Size (TV, LV_HOR_RES, LV_VER_RES);
 
+      Theme_Tab := Tabview.Add_Tab (TV, New_String ("Theme"));
       Tab1 := Tabview.Add_Tab (TV, New_String ("Tab1"));
       Tab2 := Tabview.Add_Tab (TV, New_String ("Tab2"));
       Tab3 := Tabview.Add_Tab (TV, New_String ("Tab3"));
 
+      Create_Theme_Tab (Theme_Tab);
       Create_Tab1 (Tab1);
       Create_Tab2 (Tab2);
       Create_Tab3 (Tab3);
