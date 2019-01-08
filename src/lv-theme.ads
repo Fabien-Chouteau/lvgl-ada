@@ -21,7 +21,7 @@ package Lv.Theme is
       Font : Lv.Font.Font) return Theme;  -- default.h:42
    pragma Import (C, Material_Init, "lv_theme_material_init");
 
-   function Get_Material return access int;  -- material.h:48
+   function Get_Material return Theme;  -- material.h:48
    pragma Import (C, Get_Material, "lv_theme_get_material");
 
    function Mono_Init
@@ -29,7 +29,7 @@ package Lv.Theme is
       Font : Lv.Font.Font) return Theme;  -- default.h:42
    pragma Import (C, Mono_Init, "lv_theme_mono_init");
 
-   function Get_Mono return access int;  -- mono.h:48
+   function Get_Mono return Theme;  -- mono.h:48
    pragma Import (C, Get_Mono, "lv_theme_get_mono");
 
    function Alien_Init
