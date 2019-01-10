@@ -1,67 +1,11 @@
-pragma Style_Checks (Off);
-
 with Interfaces.C.Extensions;
+
+with LV.Color_Types;
 
 package Lv.Color is
 
-   type Color8_T;
-   type Color8_T_Anon3468_Struct is record
-      Blue  : Extensions.Unsigned_2;
-      Green : Extensions.Unsigned_3;
-      Red   : Extensions.Unsigned_3;
-   end record;
-   pragma Convention (C_Pass_By_Copy, Color8_T_Anon3468_Struct);
-   type Color8_T (Discr : unsigned := 0) is record
-      case Discr is
-         when 0 =>
-            Anon4136 : aliased Color8_T_Anon3468_Struct;
-         when others =>
-            Full : aliased Uint8_T;
-      end case;
-   end record;
-   pragma Convention (C_Pass_By_Copy, Color8_T);
-   pragma Unchecked_Union (Color8_T);
-
-   type Color16_T;
-   type Color16_T_Anon3473_Struct is record
-      Blue  : Extensions.Unsigned_5;
-      Green : Extensions.Unsigned_6;
-      Red   : Extensions.Unsigned_5;
-   end record;
-   pragma Convention (C_Pass_By_Copy, Color16_T_Anon3473_Struct);
-   type Color16_T (Discr : unsigned := 0) is record
-      case Discr is
-         when 0 =>
-            Anon4145 : aliased Color16_T_Anon3473_Struct;
-         when others =>
-            Full : aliased Uint16_T;
-      end case;
-   end record;
-   pragma Convention (C_Pass_By_Copy, Color16_T);
-   pragma Unchecked_Union (Color16_T);
-
-   type Color32_T;
-   type Color32_T_Anon3478_Struct is record
-      Blue  : aliased Uint8_T;
-      Green : aliased Uint8_T;
-      Red   : aliased Uint8_T;
-      Alpha : aliased Uint8_T;
-   end record;
-   pragma Convention (C_Pass_By_Copy, Color32_T_Anon3478_Struct);
-   type Color32_T (Discr : unsigned := 0) is record
-      case Discr is
-         when 0 =>
-            Comp : aliased Color32_T_Anon3478_Struct;
-         when others =>
-            Full : aliased Uint32_T;
-      end case;
-   end record;
-   pragma Convention (C_Pass_By_Copy, Color32_T);
-   pragma Unchecked_Union (Color32_T);
-
-   subtype Color_Int_T is Uint32_T;
-
-   subtype Color_T is Color32_T;
+   subtype Color_T is LV.Color_Types.Color_T;
+   subtype Color_Int_T is LV.Color_Types.Color_Int_T;
 
    subtype Opa_T is Uint8_T;
 
@@ -73,12 +17,10 @@ package Lv.Color is
    pragma Convention (C_Pass_By_Copy, Color_Hsv_T);
 
    function Color_Make
-     (R8, G8, B8 : Uint8_T) return Color_T is
-     (Discr => 0, Comp => (B8, G8, R8, 16#ff#));
-   --  arg-macro: procedure COLOR_HEX (c)
-   --    COLOR_MAKE(((uint32_t)((uint32_t)c >> 16) and 16#FF#), ((uint32_t)((uint32_t)c >> 8) and 16#FF#), ((uint32_t) c and 16#FF#))
-   --  arg-macro: procedure COLOR_HEX3 (c)
-   --    COLOR_MAKE((((c >> 4) and 16#F0#) or ((c >> 8) and 16#F#)), ((uint32_t)(c and 16#F0#) or ((c and 16#F0#) >> 4)), ((uint32_t)(c and 16#F#) or ((c and 16#F#) << 4)))
+     (R8, G8, B8 : Uint8_T)
+      return Color_T
+      renames LV.Color_Types.Color_Make
+   with Inline_Always;
 
    Color_White   : constant Color_T := Color_Make (16#FF#, 16#FF#, 16#FF#);
    Color_Silver  : constant Color_T := Color_Make (16#C0#, 16#C0#, 16#C0#);
