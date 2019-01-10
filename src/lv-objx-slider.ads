@@ -25,7 +25,7 @@ package Lv.Objx.Slider is
    procedure Set_Range (Self : Instance; Min : Int16_T; Max : Int16_T);
    pragma Import (C, Set_Range, "lv_slider_set_range_inline");
 
-   procedure Set_Action (Self : Instance; Arg2 : Lv_Action_T);
+   procedure Set_Action (Self : Instance; Arg2 : Action_Func_T);
    pragma Import (C, Set_Action, "lv_slider_set_action");
 
    procedure Set_Knob_In (Self : Instance; Arg2 : U_Bool);
@@ -46,7 +46,7 @@ package Lv.Objx.Slider is
    function Get_Max_Value (Self : Instance) return Int16_T;
    pragma Import (C, Get_Max_Value, "lv_slider_get_max_value_inline");
 
-   function Get_Action (Self : Instance) return Lv_Action_T;
+   function Get_Action (Self : Instance) return Action_Func_T;
    pragma Import (C, Get_Action, "lv_slider_get_action");
 
    function Is_Dragged (Self : Instance) return U_Bool;

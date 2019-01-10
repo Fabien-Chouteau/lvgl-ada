@@ -41,19 +41,19 @@ package Lv.Objx.Page is
    procedure Clean (Self : Instance);
    pragma Import (C, Clean, "lv_page_clean");
 
-   function Get_Pr_Action (Self : Instance) return Lv_Action_T;
+   function Get_Pr_Action (Self : Instance) return Action_Func_T;
    pragma Import (C, Get_Pr_Action, "lv_page_get_pr_action");
 
-   function Get_Rel_Action (Self : Instance) return Lv_Action_T;
+   function Get_Rel_Action (Self : Instance) return Action_Func_T;
    pragma Import (C, Get_Rel_Action, "lv_page_get_rel_action");
 
    function Get_Scrl (Arg1 : Instance) return Obj_T;
    pragma Import (C, Get_Scrl, "lv_page_get_scrl");
 
-   procedure Set_Rel_Action (Self : Instance; Rel_Action : Lv_Action_T);
+   procedure Set_Rel_Action (Self : Instance; Rel_Action : Action_Func_T);
    pragma Import (C, Set_Rel_Action, "lv_page_set_rel_action");
 
-   procedure Set_Pr_Action (Self : Instance; Pr_Action : Lv_Action_T);
+   procedure Set_Pr_Action (Self : Instance; Pr_Action : Action_Func_T);
    pragma Import (C, Set_Pr_Action, "lv_page_set_pr_action");
 
    procedure Set_Sb_Mode (Self : Instance; Sb_Mode : Lv_Sb_Mode_T);

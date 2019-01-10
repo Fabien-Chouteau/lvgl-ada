@@ -22,10 +22,10 @@ package Lv.Objx.Win is
    function Add_Btn
      (Self : Instance;
       Arg2 : System.Address;
-      Arg3 : Lv_Action_T) return Btn.Instance;
+      Arg3 : Action_Func_T) return Btn.Instance;
    pragma Import (C, Add_Btn, "lv_win_add_btn");
 
-   function Close_Action (Self : Instance) return Lv_Res_T;
+   function Close_Action (Self : Instance) return Res_T;
    pragma Import (C, Close_Action, "lv_win_close_action");
 
    procedure Set_Title

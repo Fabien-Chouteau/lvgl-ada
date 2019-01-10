@@ -21,8 +21,8 @@ package Lv.Objx.Chart is
    pragma Import (C, Create, "lv_chart_create");
 
    function Add_Series
-     (Self : Instance;
-      Arg2 : Lv.Color.Color_T) return Series;
+     (Self  : Instance;
+      Color : Lv.Color.Color_T) return Series;
    pragma Import (C, Add_Series, "lv_chart_add_series");
 
    procedure Set_Div_Line_Count

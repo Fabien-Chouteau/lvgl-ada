@@ -20,7 +20,7 @@ package Lv.Objx.Switch is
    procedure Off (Self : Instance);
    pragma Import (C, Off, "lv_sw_off");
 
-   procedure Set_Action (Self : Instance; Action : Lv_Action_T);
+   procedure Set_Action (Self : Instance; Action : Action_Func_T);
    pragma Import (C, Set_Action, "lv_sw_set_action_inline");
 
    procedure Set_Style
@@ -32,7 +32,7 @@ package Lv.Objx.Switch is
    function Get_State (Self : Instance) return U_Bool;
    pragma Import (C, Get_State, "lv_sw_get_state_inline");
 
-   function Get_Action (Self : Instance) return Lv_Action_T;
+   function Get_Action (Self : Instance) return Action_Func_T;
    pragma Import (C, Get_Action, "lv_sw_get_action_inline");
 
    function Get_Style

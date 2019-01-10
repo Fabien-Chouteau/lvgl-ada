@@ -21,7 +21,7 @@ package Lv.Objx.Btnm is
 
    type Action_T is access function
      (Arg1 : access Obj_T;
-      Arg2 : Interfaces.C.Strings.chars_ptr) return Lv_Res_T;
+      Arg2 : Interfaces.C.Strings.chars_ptr) return Res_T;
    pragma Convention (C, Action_T);
 
    subtype Style_T is Uint8_T;

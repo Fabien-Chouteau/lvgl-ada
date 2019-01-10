@@ -56,7 +56,7 @@ package Lv.Objx.Btn is
    procedure Toggle (Self : Instance);
    pragma Import (C, Toggle, "lv_btn_toggle");
 
-   procedure Set_Action (Self : Instance; Arg2 : Action_T; Arg3 : Lv_Action_T);
+   procedure Set_Action (Self : Instance; Arg2 : Action_T; Arg3 : Action_Func_T);
    pragma Import (C, Set_Action, "lv_btn_set_action");
 
    procedure Set_Layout (Self : Instance; Layout : Lv.Objx.Cont.Layout_T);
@@ -86,7 +86,7 @@ package Lv.Objx.Btn is
    function Get_Toggle (Self : Instance) return U_Bool;
    pragma Import (C, Get_Toggle, "lv_btn_get_toggle");
 
-   function Get_Action (Self : Instance; Arg2 : Action_T) return Lv_Action_T;
+   function Get_Action (Self : Instance; Arg2 : Action_T) return Action_Func_T;
    pragma Import (C, Get_Action, "lv_btn_get_action");
 
    function Get_Layout (Self : Instance) return Lv.Objx.Cont.Layout_T;

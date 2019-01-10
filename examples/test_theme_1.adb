@@ -152,10 +152,10 @@ package body Test_Theme_1 is
 
    procedure Init_Themes (Hue : Lv.Theme.Hue_T);
 
-   function Roller_Action (Arg1 : Obj_T) return Lv_Res_T
+   function Roller_Action (Arg1 : Obj_T) return Res_T
      with Convention => C;
 
-   function Slider_Action (Arg1 : Obj_T) return Lv_Res_T
+   function Slider_Action (Arg1 : Obj_T) return Res_T
      with Convention => C;
 
    procedure Init_Themes (Hue : Lv.Theme.Hue_T) is
@@ -170,7 +170,7 @@ package body Test_Theme_1 is
       Unused := Lv.Theme.Zen_Init (Hue, Lv.Font.No_Font);
    end Init_Themes;
 
-   function Roller_Action (Arg1 : Obj_T) return Lv_Res_T is
+   function Roller_Action (Arg1 : Obj_T) return Res_T is
    begin
       case Roller.Get_Selected (Arg1) is
          when 0       => Lv.Theme.Set_Current (Lv.Theme.Get_Default);
@@ -185,7 +185,7 @@ package body Test_Theme_1 is
       return Res_Ok;
    end Roller_Action;
 
-   function Slider_Action (Arg1 : Obj_T) return Lv_Res_T is
+   function Slider_Action (Arg1 : Obj_T) return Res_T is
    begin
       Init_Themes (Uint16_T (Slider.Get_Value (Arg1)));
       return Roller_Action (Theme_Roller);
@@ -394,10 +394,10 @@ package body Test_Theme_1 is
       Align (LD, No_Obj, Align_Center, 0, -LV_DPI);
    end Create_Tab2;
 
-   function Win_Close_Action (B : Btn.Instance) return Lv_Res_T
+   function Win_Close_Action (B : Btn.Instance) return Res_T
      with Convention => C;
 
-   function Win_Close_Action (B : Btn.Instance) return Lv_Res_T is
+   function Win_Close_Action (B : Btn.Instance) return Res_T is
       W : constant Win.Instance := Win.Get_From_Btn (B);
    begin
       Del (W);

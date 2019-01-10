@@ -22,7 +22,7 @@ package Lv.Objx.Ddlist is
    procedure Set_Selected (Self : Instance; Sel_Opt : Uint16_T);
    pragma Import (C, Set_Selected, "lv_ddlist_set_selected");
 
-   procedure Set_Action (Self : Instance; Action : Lv_Action_T);
+   procedure Set_Action (Self : Instance; Action : Action_Func_T);
    pragma Import (C, Set_Action, "lv_ddlist_set_action");
 
    procedure Set_Fix_Height (Self : Instance; H : Lv.Area.Coord_T);
@@ -55,7 +55,7 @@ package Lv.Objx.Ddlist is
       Arg2 : Interfaces.C.Strings.chars_ptr);
    pragma Import (C, Get_Selected_Str, "lv_ddlist_get_selected_str");
 
-   function Get_Action (Self : Instance) return Lv_Action_T;
+   function Get_Action (Self : Instance) return Action_Func_T;
    pragma Import (C, Get_Action, "lv_ddlist_get_action");
 
    function Get_Fix_Height (Self : Instance) return Lv.Area.Coord_T;

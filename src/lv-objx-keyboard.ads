@@ -46,10 +46,10 @@ package Lv.Objx.Keyboard is
    procedure Set_Cursor_Manage (Self : Instance; Arg2 : U_Bool);
    pragma Import (C, Set_Cursor_Manage, "lv_kb_set_cursor_manage");
 
-   procedure Set_Ok_Action (Self : Instance; Arg2 : Lv_Action_T);
+   procedure Set_Ok_Action (Self : Instance; Arg2 : Action_Func_T);
    pragma Import (C, Set_Ok_Action, "lv_kb_set_ok_action");
 
-   procedure Set_Hide_Action (Self : Instance; Arg2 : Lv_Action_T);
+   procedure Set_Hide_Action (Self : Instance; Arg2 : Action_Func_T);
    pragma Import (C, Set_Hide_Action, "lv_kb_set_hide_action");
 
    procedure Set_Map (Self : Instance; Map : System.Address);
@@ -70,10 +70,10 @@ package Lv.Objx.Keyboard is
    function Get_Cursor_Manage (Self : Instance) return U_Bool;
    pragma Import (C, Get_Cursor_Manage, "lv_kb_get_cursor_manage");
 
-   function Get_Ok_Action (Self : Instance) return Lv_Action_T;
+   function Get_Ok_Action (Self : Instance) return Action_Func_T;
    pragma Import (C, Get_Ok_Action, "lv_kb_get_ok_action");
 
-   function Get_Hide_Action (Self : Instance) return Lv_Action_T;
+   function Get_Hide_Action (Self : Instance) return Action_Func_T;
    pragma Import (C, Get_Hide_Action, "lv_kb_get_hide_action");
 
    function Get_Style

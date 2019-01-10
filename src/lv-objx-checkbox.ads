@@ -20,7 +20,7 @@ package Lv.Objx.Checkbox is
    procedure Set_Inactive (Self : Instance);
    pragma Import (C, Set_Inactive, "lv_cb_set_inactive_inline");
 
-   procedure Set_Action (Self : Instance; Action : Lv_Action_T);
+   procedure Set_Action (Self : Instance; Action : Action_Func_T);
    pragma Import (C, Set_Action, "lv_cb_set_action_inline");
 
    procedure Set_Style
@@ -35,7 +35,7 @@ package Lv.Objx.Checkbox is
    function Is_Checked (Self : Instance) return U_Bool;
    pragma Import (C, Is_Checked, "lv_cb_is_checked_inline");
 
-   function Get_Action (Self : Instance) return Lv_Action_T;
+   function Get_Action (Self : Instance) return Action_Func_T;
    pragma Import (C, Get_Action, "lv_cb_get_action_inline");
 
    function Get_Style

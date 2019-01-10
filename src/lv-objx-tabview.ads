@@ -13,7 +13,7 @@ package Lv.Objx.Tabview is
 
    type Lv_Tabview_Action_T is access function
      (Arg1 : access Obj_T;
-      Arg2 : Uint16_T) return Lv_Res_T;
+      Arg2 : Uint16_T) return Res_T;
    pragma Convention (C, Lv_Tabview_Action_T);
 
    subtype Lv_Tabview_Btns_Pos_T is Uint8_T;

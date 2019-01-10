@@ -1,7 +1,5 @@
-with Interfaces.C; use Interfaces.C;
 with Lv.Area;
 with System;
-with Interfaces.C.Extensions;
 
 package Lv.Hal.Indev is
 

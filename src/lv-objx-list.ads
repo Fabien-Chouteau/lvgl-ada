@@ -25,7 +25,7 @@ package Lv.Objx.List is
      (Self : Instance;
       Arg2 : System.Address;
       Arg3 : Interfaces.C.Strings.chars_ptr;
-      Arg4 : Lv_Action_T) return Btn.Instance;
+      Arg4 : Action_Func_T) return Btn.Instance;
    pragma Import (C, Add, "lv_list_add");
 
    procedure Set_Btn_Selected (Self : Instance; Arg2 : Obj_T);

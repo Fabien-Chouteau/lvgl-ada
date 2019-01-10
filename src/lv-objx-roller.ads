@@ -19,7 +19,7 @@ package Lv.Objx.Roller is
    procedure Set_Selected (Self : Instance; Set_Opt : Uint16_T; Anim_En : U_Bool);
    pragma Import (C, Set_Selected, "lv_roller_set_selected");
 
-   procedure Set_Action (Self : Instance; Action : Lv_Action_T);
+   procedure Set_Action (Self : Instance; Action : Action_Func_T);
    pragma Import (C, Set_Action, "lv_roller_set_action_inline");
 
    procedure Set_Visible_Row_Count (Self : Instance; Arg2 : Uint8_T);
@@ -49,7 +49,7 @@ package Lv.Objx.Roller is
       Buf  : Interfaces.C.Strings.chars_ptr);
    pragma Import (C, Get_Selected_Str, "lv_roller_get_selected_str_inline");
 
-   function Get_Action (Self : Instance) return Lv_Action_T;
+   function Get_Action (Self : Instance) return Action_Func_T;
    pragma Import (C, Get_Action, "lv_roller_get_action_inline");
 
    function Get_Anim_Time (Self : Instance) return Uint16_T;

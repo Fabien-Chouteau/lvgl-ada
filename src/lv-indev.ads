@@ -1,4 +1,3 @@
-with Interfaces.C; use Interfaces.C;
 with Lv.Hal.Indev;
 with Lv.Objx;
 with Lv.Area;

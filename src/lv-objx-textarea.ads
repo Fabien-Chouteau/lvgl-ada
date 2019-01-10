@@ -74,7 +74,7 @@ package Lv.Objx.Textarea is
    procedure Set_Max_Length (Self : Textarea; Arg2 : Uint16_T);
    pragma Import (C, Set_Max_Length, "lv_ta_set_max_length");
 
-   procedure Set_Action (Self : Textarea; Action : Lv_Action_T);
+   procedure Set_Action (Self : Textarea; Action : Action_Func_T);
    pragma Import (C, Set_Action, "lv_ta_set_action_inline");
 
    procedure Set_Sb_Mode (Self : Textarea; Mode : Page.Lv_Sb_Mode_T);
@@ -114,7 +114,7 @@ package Lv.Objx.Textarea is
    function Get_Max_Length (Self : Textarea) return Uint16_T;
    pragma Import (C, Get_Max_Length, "lv_ta_get_max_length");
 
-   function Get_Action (Self : Textarea) return Lv_Action_T;
+   function Get_Action (Self : Textarea) return Action_Func_T;
    pragma Import (C, Get_Action, "lv_ta_get_action_inline");
 
    function Get_Sb_Mode (Self : Textarea) return Page.Lv_Sb_Mode_T;
