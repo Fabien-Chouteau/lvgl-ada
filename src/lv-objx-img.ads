@@ -6,45 +6,71 @@ package Lv.Objx.Img is
 
    subtype Instance is Obj_T;
 
-   function Create
-     (Parent : Obj_T;
-      Copy   : Instance) return Instance;  -- lv_img.h:61
-   pragma Import (C, Create, "lv_img_create");
+   --  Create an image objects
+   --  @param par pointer to an object, it will be the parent of the new button
+   --  @param copy pointer to a image object, if not NULL then the new object will be copied from it
+   --  @return pointer to the created image
+   function Create (Parent : Obj_T; Copy : Instance) return Instance;
 
-   procedure Set_Src (Self : Instance; Arg2 : System.Address);  -- lv_img.h:72
-   pragma Import (C, Set_Src, "lv_img_set_src");
+   ----------------------
+   -- Setter functions --
+   ----------------------
 
-   procedure Set_File
-     (Self : Instance;
-      Fn   : Interfaces.C.Strings.chars_ptr);  -- lv_img.h:80
-   pragma Import (C, Set_File, "lv_img_set_file");
+   --  Set the pixel map to display by the image
+   --  @param self pointer to an image object
+   --  @param data the image data
+   procedure Set_Src (Self : Instance; Data : System.Address);
 
-   procedure Set_Auto_Size (Self : Instance; Arg2 : U_Bool);  -- lv_img.h:92
-   pragma Import (C, Set_Auto_Size, "lv_img_set_auto_size");
+   --  Enable the auto size feature.
+   --  If enabled the object size will be same as the picture size.
+   --  @param self pointer to an image
+   --  @param autosize_en true: auto size enable, false: auto size disable
+   procedure Set_Auto_Size (Self : Instance; Autosize : U_Bool);
 
+   --  Set the style of an image
+   --  @param self pointer to an image object
+   --  @param style pointer to a style
    procedure Set_Style
      (Self  : Instance;
-      Style : access Lv.Style.Style);  -- lv_img.h:99
+      Style : access Lv.Style.Style);
+
+   ----------------------
+   -- Getter functions --
+   ----------------------
+
+   --  Get the source of the image
+   --  @param self pointer to an image object
+   --  @return the image source (symbol, file name or C array)
+  function Src (Self : Instance) return System.Address;
+
+   --  Get the name of the file set for an image
+   --  @param self pointer to an image
+   --  @return file name
+   function File_Name
+     (Self : Instance) return Interfaces.C.Strings.chars_ptr;
+
+   --  Get the auto size enable attribute
+   --  @param self pointer to an image
+   --  @return true: auto size is enabled, false: auto size is disabled
+   function Auto_Size (Self : Instance) return U_Bool;
+
+   --  Get the style of an image object
+   --  @param self pointer to an image object
+   --  @return pointer to the image's style
+   function Style
+     (Self : Instance) return access Lv.Style.Style;
+
+   -------------
+   -- Imports --
+   -------------
+
+   pragma Import (C, Create, "lv_img_create");
+   pragma Import (C, Set_Src, "lv_img_set_src");
+   pragma Import (C, Set_Auto_Size, "lv_img_set_auto_size");
    pragma Import (C, Set_Style, "lv_img_set_style");
-
-   procedure Set_Upscale (Self : Instance; Upcale : U_Bool);  -- lv_img.h:109
-   pragma Import (C, Set_Upscale, "lv_img_set_upscale");
-
-   function Get_Src (Self : Instance) return System.Address;  -- lv_img.h:124
-   pragma Import (C, Get_Src, "lv_img_get_src");
-
-   function Get_File_Name
-     (Self : Instance) return Interfaces.C.Strings.chars_ptr;  -- lv_img.h:131
-   pragma Import (C, Get_File_Name, "lv_img_get_file_name");
-
-   function Get_Auto_Size (Self : Instance) return U_Bool;  -- lv_img.h:138
-   pragma Import (C, Get_Auto_Size, "lv_img_get_auto_size");
-
-   function Get_Style
-     (Self : Instance) return access Lv.Style.Style;  -- lv_img.h:145
-   pragma Import (C, Get_Style, "lv_img_get_style");
-
-   function Get_Upscale (Self : Instance) return U_Bool;  -- lv_img.h:155
-   pragma Import (C, Get_Upscale, "lv_img_get_upscale");
+   pragma Import (C, Src, "lv_img_get_src");
+   pragma Import (C, File_Name, "lv_img_get_file_name");
+   pragma Import (C, Auto_Size, "lv_img_get_auto_size");
+   pragma Import (C, Style, "lv_img_get_style");
 
 end Lv.Objx.Img;

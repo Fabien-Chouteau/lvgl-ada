@@ -1,5 +1,6 @@
 with Interfaces.C; use Interfaces.C;
 with Interfaces;
+with Interfaces.C.Strings;
 
 package Lv is
 
@@ -14,6 +15,10 @@ package Lv is
 
    subtype U_Bool is int;
 
+   type String_Array is array (Natural range <>) of Interfaces.C.Strings.chars_ptr
+     with Convention => C;
+
+   --  Init. the 'lv' library.
    procedure Init;
    pragma Import (C, Init, "lv_init");
 end Lv;

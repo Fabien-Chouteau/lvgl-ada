@@ -130,16 +130,15 @@ package body Test_Theme_1 is
    SYMBOL_BLUETOOTH  : constant String := C'Val (16#EF#) & C'Val (16#A0#) & C'Val (16#B1#);
    pragma Unreferenced (SYMBOL_BLUETOOTH);
 
-   Btnm_Str : constant array (Natural range <>) of chars_ptr
+   Btnm_Str : aliased constant String_Array
      := (New_String ("1"),
          New_String ("2"),
          New_String ("3"),
          New_String (SYMBOL_OK),
          New_String (SYMBOL_CLOSE),
-         New_String (""))
-       with Convention => C;
+         New_String (""));
 
-   Points : constant array (Natural range <>) of Lv.Area.Point_T
+   Points : aliased constant Lv.Area.Point_Array
      := ((0, 0), (LV_HOR_RES / 5, 0))
        with Convention => C;
 
@@ -172,7 +171,7 @@ package body Test_Theme_1 is
 
    function Roller_Action (Arg1 : Obj_T) return Res_T is
    begin
-      case Roller.Get_Selected (Arg1) is
+      case Roller.Selected (Arg1) is
          when 0       => Lv.Theme.Set_Current (Lv.Theme.Get_Default);
          when 1       => Lv.Theme.Set_Current (Lv.Theme.Get_Material);
          when 2       => Lv.Theme.Set_Current (Lv.Theme.Get_Mono);
@@ -187,7 +186,7 @@ package body Test_Theme_1 is
 
    function Slider_Action (Arg1 : Obj_T) return Res_T is
    begin
-      Init_Themes (Uint16_T (Slider.Get_Value (Arg1)));
+      Init_Themes (Uint16_T (Slider.Value (Arg1)));
       return Roller_Action (Theme_Roller);
    end Slider_Action;
 
@@ -230,7 +229,7 @@ package body Test_Theme_1 is
       Ba    : Bar.Instance;
       Slide : Slider.Instance;
       L     : Line.Instance;
-      TA    : Textarea.Textarea;
+      TA    : Textarea.Instance;
       Check : Checkbox.Instance;
       Drop  : Ddlist.Instance;
       Lst   : List.Instance;
@@ -274,7 +273,7 @@ package body Test_Theme_1 is
 
       BM := Btnm.Create (H, No_Obj);
       Set_Size (BM, LV_HOR_RES / 4, 2 * LV_DPI / 3);
-      Btnm.Set_Map (BM, Btnm_Str'Address);
+      Btnm.Set_Map (BM, Btnm_Str'Access);
       Btnm.Set_Toggle (BM, 1, 3);
 
       H := Cont.Create (Parent, H);
@@ -298,7 +297,7 @@ package body Test_Theme_1 is
       Slider.Set_Value (Slide, 70);
 
       L := Line.Create (H, No_Obj);
-      Line.Set_Points (L, Points'Address, 2);
+      Line.Set_Points (L, Points'Access, 2);
       --  FIXME: style
 
       TA := Textarea.Create (H, No_Obj);
@@ -347,12 +346,12 @@ package body Test_Theme_1 is
    end Create_Tab1;
 
    procedure Create_Tab2 (Parent : Page.Instance) is
-      W  : constant Lv.Area.Coord_T := Page.Get_Scrl_Width (Parent);
+      W  : constant Lv.Area.Coord_T := Page.Scrl_Width (Parent);
       Ch : Chart.Instance;
       S1 : Chart.Series;
       G  : Gauge.Instance;
       A  : Arc.Instance;
-      TA : Textarea.Textarea;
+      TA : Textarea.Instance;
       KB : Keyboard.Instance;
       LD : Preload.Instance;
    begin
@@ -398,9 +397,10 @@ package body Test_Theme_1 is
      with Convention => C;
 
    function Win_Close_Action (B : Btn.Instance) return Res_T is
-      W : constant Win.Instance := Win.Get_From_Btn (B);
+      W      : constant Win.Instance := Win.From_Btn (B);
+      Unused : Res_T;
    begin
-      Del (W);
+      Unused := Del (W);
       return Res_Inv;
    end Win_Close_Action;
 
@@ -421,8 +421,8 @@ package body Test_Theme_1 is
       P      : Page.Instance;
 
       Cal    : Calendar.Instance;
-      Highlighted_days : aliased array (0 .. 1) of aliased Calendar.Date_T
-        with Convention => C;
+      Highlighted_days : aliased Calendar.Date_Array :=
+        ((2018, 5, 5), (2018, 5, 8));
 
       Box : Mbox.Instance;
    begin
@@ -477,15 +477,7 @@ package body Test_Theme_1 is
       Align (Cal, P, Align_Out_Right_Top, -LV_DPI / 2, LV_DPI / 3);
       Set_Top (Cal, 1);
 
-      Highlighted_days (0).Day := 5;
-      Highlighted_days (0).Month := 5;
-      Highlighted_days (0).Year := 2018;
-
-      Highlighted_days (1).Day := 8;
-      Highlighted_days (1).Month := 5;
-      Highlighted_days (1).Year := 2018;
-
-      Calendar.Set_Highlighted_Dates (Cal, Highlighted_days'Address, 2);
+      Calendar.Set_Highlighted_Dates (Cal, Highlighted_days'Access, 2);
       Calendar.Set_Today_Date (Cal, Highlighted_days (0)'Access);
       Calendar.Set_Showed_Date (Cal, Highlighted_days (0)'Access);
 

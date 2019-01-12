@@ -1,13 +1,4 @@
-pragma Style_Checks (Off);
-
-with Interfaces.C; use Interfaces.C;
-with Interfaces.C.Extensions;
 with System;
-
-with Lv.Color;
-with Lv.Anim;
-with Lv.Area;
-with Lv.Font;
 
 package Lv.Style is
 
