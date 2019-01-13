@@ -49,8 +49,7 @@ package body Test_Theme_1 is
          New_String (""));
 
    Points : aliased constant Lv.Area.Point_Array
-     := ((0, 0), (LV_HOR_RES / 5, 0))
-       with Convention => C;
+     := ((0, 0), (LV_HOR_RES / 5, 0));
 
    Theme_Roller : Roller.Instance;
 
@@ -133,18 +132,19 @@ package body Test_Theme_1 is
       B   : Btn.Instance;
       Lab : Label.Instance;
 
-      BM    : Btnm.Instance;
-      Sw_H  : Cont.Instance;
-      S     : Switch.Instance;
-      Ba    : Bar.Instance;
-      Slide : Slider.Instance;
-      L     : Line.Instance;
-      TA    : Textarea.Instance;
-      Check : Checkbox.Instance;
-      Drop  : Ddlist.Instance;
-      Lst   : List.Instance;
-      L_Btn : Btn.Instance;
-      Rol   : Roller.Instance;
+      BM     : Btnm.Instance;
+      Sw_H   : Cont.Instance;
+      S      : Switch.Instance;
+      Ba     : Bar.Instance;
+      Slide  : Slider.Instance;
+      L      : Line.Instance;
+      TA     : Textarea.Instance;
+      Check  : Checkbox.Instance;
+      Drop   : Ddlist.Instance;
+      Lst    : List.Instance;
+      L_Btn  : Btn.Instance;
+      Unused : Btn.Instance;
+      Rol    : Roller.Instance;
    begin
       Page.Set_Scrl_Layout (Parent, Cont.Layout_Pretty);
 
@@ -232,16 +232,16 @@ package body Test_Theme_1 is
       Set_Size (L_Btn, LV_HOR_RES / 4, LV_VER_RES / 2);
       Btn.Set_Toggle (L_Btn, 1);
 
-      L_Btn := List.Add (Lst, SYMBOL_WIFI'Address, New_String ("WiFi"), null);
-      L_Btn := List.Add (Lst, SYMBOL_GPS'Address, New_String ("GPS"), null);
-      L_Btn := List.Add (Lst, SYMBOL_AUDIO'Address, New_String ("Audio"), null);
-      L_Btn := List.Add (Lst, SYMBOL_VIDEO'Address, New_String ("Video"), null);
-      L_Btn := List.Add (Lst, SYMBOL_CALL'Address, New_String ("Call"), null);
-      L_Btn := List.Add (Lst, SYMBOL_BELL'Address, New_String ("Bell"), null);
-      L_Btn := List.Add (Lst, SYMBOL_FILE'Address, New_String ("File"), null);
-      L_Btn := List.Add (Lst, SYMBOL_EDIT'Address, New_String ("Edit"), null);
-      L_Btn := List.Add (Lst, SYMBOL_CUT'Address, New_String ("Cut"), null);
-      L_Btn := List.Add (Lst, SYMBOL_COPY'Address, New_String ("Copy"), null);
+      Unused := List.Add (Lst, SYMBOL_WIFI'Address, New_String ("WiFi"), null);
+      Unused := List.Add (Lst, SYMBOL_GPS'Address, New_String ("GPS"), null);
+      Unused := List.Add (Lst, SYMBOL_AUDIO'Address, New_String ("Audio"), null);
+      Unused := List.Add (Lst, SYMBOL_VIDEO'Address, New_String ("Video"), null);
+      Unused := List.Add (Lst, SYMBOL_CALL'Address, New_String ("Call"), null);
+      Unused := List.Add (Lst, SYMBOL_BELL'Address, New_String ("Bell"), null);
+      Unused := List.Add (Lst, SYMBOL_FILE'Address, New_String ("File"), null);
+      Unused := List.Add (Lst, SYMBOL_EDIT'Address, New_String ("Edit"), null);
+      Unused := List.Add (Lst, SYMBOL_CUT'Address, New_String ("Cut"), null);
+      Unused := List.Add (Lst, SYMBOL_COPY'Address, New_String ("Copy"), null);
 
       Rol := Roller.Create (H, No_Obj);
       Roller.Set_Options (Rol, New_String ("Monday" & ASCII.LF &
