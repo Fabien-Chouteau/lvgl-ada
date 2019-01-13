@@ -1,3 +1,5 @@
+with Ada_Lv_Conf; use Ada_Lv_Conf;
+
 with Lv; use Lv;
 with Lv.Area;
 with Lv.Objx; use Lv.Objx;
@@ -35,10 +37,6 @@ with Lv.Font;
 package body Test_Theme_1 is
 
    use type Int16_T;
-
-   LV_DPI     : constant := 100; --  FIXME: This should be in the conf
-   LV_HOR_RES : constant := 320; --  FIXME: This should be in the conf
-   LV_VER_RES : constant := 240; --  FIXME: This should be in the conf
 
    Btnm_Str : aliased constant String_Array
      := (New_String ("1"),
