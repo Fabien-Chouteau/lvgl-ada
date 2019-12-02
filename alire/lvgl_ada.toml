@@ -1,0 +1,15 @@
+[general]
+description = "Bindings for the LVGL embedded GUI framework"
+maintainers = ["fabien.chouteau@gmail.com"]
+maintainers-logins = ["Fabien-Chouteau"]
+tags = ["embedded", "gui", "lvgl", "no-std"]
+licenses = ["MIT"]
+
+project-files = ["lvgl_ada_1bit_color.gpr",
+                 "lvgl_ada_8bit_color.gpr",
+                 "lvgl_ada_16bit_color.gpr",
+                 "lvgl_ada_32bit_color.gpr"
+                 ]
+
+["0.1.0"]
+origin = "file://.."
