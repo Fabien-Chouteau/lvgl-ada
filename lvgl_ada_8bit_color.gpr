@@ -1,7 +1,7 @@
-project Ada_LVGL_8bit_Color extends "scripts/ada_lvgl_base.gpr" is
+project LVGL_Ada_8bit_Color extends "scripts/lvgl_ada_base.gpr" is
 
    for Languages use ("Ada");
    for Source_Dirs use ("src/color_8");
    for Object_Dir use "obj_c8";
 
-end Ada_LVGL_8bit_Color;
+end LVGL_Ada_8bit_Color;
