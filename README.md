@@ -1,3 +1,5 @@
+[![Alire](https://img.shields.io/endpoint?url=https://alire.ada.dev/badges/lvgl_ada.json)](https://alire.ada.dev/crates/lvgl_ada.html)
+
 # lvgl-ada
 
 An Ada binding for the lvgl embedded GUI library version 5.3:
