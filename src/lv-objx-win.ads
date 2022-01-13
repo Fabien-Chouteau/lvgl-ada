@@ -4,7 +4,6 @@ with Lv.Objx.Page;
 with Lv.Objx.Btn;
 with Lv.Objx.Cont;
 with System;
-with Interfaces.C.Strings;
 
 package Lv.Objx.Win is
 
@@ -52,7 +51,7 @@ package Lv.Objx.Win is
    --  @param title string of the new title
    procedure Set_Title
      (Self  : Instance;
-      Title : Interfaces.C.Strings.chars_ptr);
+      Title : C_String_Ptr);
 
    --  Set the control button size of a window
    --  @param self pointer to a window object
@@ -85,7 +84,7 @@ package Lv.Objx.Win is
    --  Get the title of a window
    --  @param self pointer to a window object
    --  @return title string of the window
-   function Title (Self : Instance) return Interfaces.C.Strings.chars_ptr;
+   function Title (Self : Instance) return C_String_Ptr;
 
    --  Get the content holder object of window (`lv_page`) to allow additional customization
    --  @param self pointer to a window object

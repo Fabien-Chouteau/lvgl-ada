@@ -1,4 +1,3 @@
-with Interfaces.C.Strings;
 with Lv.Area;
 with Lv.Style;
 
@@ -31,7 +30,7 @@ package Lv.Objx.Label is
    --  Set a new text for a label. Memory will be allocated to store the text by the label.
    --  @param self pointer to a label object
    --  @param text '\0' terminated character string. NULL to refresh with the current text.
-   procedure Set_Text (Self : Instance; Text : Interfaces.C.Strings.chars_ptr);
+   procedure Set_Text (Self : Instance; Text : C_String_Ptr);
 
    --  Set a new text for a label from a character array. The array don't has to be '\0' terminated.
    --  Memory will be allocated to store the array by the label.
@@ -40,7 +39,7 @@ package Lv.Objx.Label is
    --  @param size the size of 'array' in bytes
   procedure Set_Array_Text
      (Self : Instance;
-      Arr  : Interfaces.C.Strings.chars_ptr;
+      Arr  : C_String_Ptr;
       Size : Uint16_T);
 
    --  Set a static text. It will not be saved by the label so the 'text' variable
@@ -49,7 +48,7 @@ package Lv.Objx.Label is
    --  @param text pointer to a text. NULL to refresh with the current text.
   procedure Set_Static_Text
      (Self : Instance;
-      Text : Interfaces.C.Strings.chars_ptr);
+      Text : C_String_Ptr);
 
    --  Set the behavior of the label with longer text then the object size
    --  @param self pointer to a label object
@@ -89,7 +88,7 @@ package Lv.Objx.Label is
    --  Get the text of a label
    --  @param self pointer to a label object
    --  @return the text of the label
-   function Text (Self : Instance) return Interfaces.C.Strings.chars_ptr;
+   function Text (Self : Instance) return C_String_Ptr;
 
    --  Get the long mode of a label
    --  @param self pointer to a label object
@@ -152,7 +151,7 @@ package Lv.Objx.Label is
    procedure Ins_Text
      (Self : Instance;
       Pos  : Uint32_T;
-      Txt  : Interfaces.C.Strings.chars_ptr);
+      Txt  : C_String_Ptr);
 
    --  Delete characters from a label. The label text can not be static.
    --  @param self pointer to a label object

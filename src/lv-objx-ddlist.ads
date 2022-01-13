@@ -1,4 +1,3 @@
-with Interfaces.C.Strings;
 with Lv.Style;
 with Lv.Area;
 with Lv.Objx.Page;
@@ -24,7 +23,7 @@ package Lv.Objx.Ddlist is
    --  @param options a string with '\n' separated options. E.g. "One\nTwo\nThree"
    procedure Set_Options
      (Self    : Instance;
-      Options : Interfaces.C.Strings.chars_ptr);
+      Options : C_String_Ptr);
 
    --  Set the selected option
    --  @param self pointer to drop down list object
@@ -74,7 +73,7 @@ package Lv.Objx.Ddlist is
    --  @param self pointer to drop down list object
    --  @return the options separated by '\n'-s (E.g. "Option1\nOption2\nOption3")
    function Options
-     (Self : Instance) return Interfaces.C.Strings.chars_ptr;
+     (Self : Instance) return C_String_Ptr;
 
    --  Get the selected option
    --  @param self pointer to drop down list object
@@ -86,7 +85,7 @@ package Lv.Objx.Ddlist is
    --  @param buf pointer to an array to store the string
    procedure Selected_Str
      (Self : Instance;
-      Buf  : Interfaces.C.Strings.chars_ptr);
+      Buf  : C_String_Ptr);
 
    --  Get the "option selected" callback function
    --  @param self pointer to a drop down list

@@ -1,4 +1,3 @@
-with Interfaces.C.Strings;
 with Lv.Style;
 
 package Lv.Objx.Roller is
@@ -22,7 +21,7 @@ package Lv.Objx.Roller is
    --  @param options a string with '\n' separated options. E.g. "One\nTwo\nThree"
    procedure Set_Options
      (Self    : Instance;
-      Options : Interfaces.C.Strings.chars_ptr);
+      Options : C_String_Ptr);
 
    --  Set the selected option
    --  @param self pointer to a roller object
@@ -67,7 +66,7 @@ package Lv.Objx.Roller is
    --  @param self pointer to roller object
    --  @return the options separated by '\n'-s (E.g. "Option1\nOption2\nOption3")
    function Options
-     (Self : Instance) return Interfaces.C.Strings.chars_ptr;
+     (Self : Instance) return C_String_Ptr;
 
    --  Get the id of the selected option
    --  @param self pointer to a roller object
@@ -79,7 +78,7 @@ package Lv.Objx.Roller is
    --  @param buf pointer to an array to store the string
    procedure Selected_Str
      (Self : Instance;
-      Buf  : Interfaces.C.Strings.chars_ptr);
+      Buf  : C_String_Ptr);
 
    --  Get the "option selected" callback function
    --  @param self pointer to a roller

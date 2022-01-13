@@ -1,4 +1,3 @@
-with Interfaces.C.Strings;
 with Lv.Style;
 with Lv.Objx.Page;
 
@@ -38,7 +37,7 @@ package Lv.Objx.Tabview is
    --  @return pointer to the created page object (lv_page). You can create your content here
    function Add_Tab
      (Self : Instance;
-      Name : Interfaces.C.Strings.chars_ptr)
+      Name : C_String_Ptr)
       return Lv.Objx.Page.Instance;
 
    ----------------------

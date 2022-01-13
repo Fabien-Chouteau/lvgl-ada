@@ -1,6 +1,5 @@
 with System;
 with Lv.Objx.Btnm;
-with Interfaces.C.Strings;
 with Lv.Style;
 
 package Lv.Objx.Mbox is
@@ -38,7 +37,7 @@ package Lv.Objx.Mbox is
    --  Set the text of the message box
    --  @param self pointer to a message box
    --  @param txt a '\0' terminated character string which will be the message box text
-   procedure Set_Text (Self : Instance; Arg2 : Interfaces.C.Strings.chars_ptr);
+   procedure Set_Text (Self : Instance; Arg2 : C_String_Ptr);
 
    --  Stop the action to call when button is released
    --  @param self pointer to a message box object
@@ -75,7 +74,7 @@ package Lv.Objx.Mbox is
    --  Get the text of the message box
    --  @param self pointer to a message box object
    --  @return pointer to the text of the message box
-   function Text (Self : Instance) return Interfaces.C.Strings.chars_ptr;
+   function Text (Self : Instance) return C_String_Ptr;
 
    --  Get the message box object from one of its button.
    --  It is useful in the button release actions where only the button is known

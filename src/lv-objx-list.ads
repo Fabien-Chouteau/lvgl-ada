@@ -2,7 +2,6 @@ pragma Style_Checks (Off);
 
 with Lv.Style;
 with System;
-with Interfaces.C.Strings;
 
 with Lv.Objx.Label;
 with Lv.Objx.Page;
@@ -40,7 +39,7 @@ package Lv.Objx.List is
    function Add
      (Self       : Instance;
       Img_Gn     : System.Address;
-      Txt        : Interfaces.C.Strings.chars_ptr;
+      Txt        : C_String_Ptr;
       Rel_Action : Action_Func_T) return Btn.Instance;
 
    ----------------------
@@ -79,7 +78,7 @@ package Lv.Objx.List is
    --  @param btn pointer to list element
    --  @return pointer to the text
    function Btn_Text
-     (Self : Instance) return Interfaces.C.Strings.chars_ptr;
+     (Self : Instance) return C_String_Ptr;
 
    --  Get the label object from a list element
    --  @param self pointer to a list element (button)

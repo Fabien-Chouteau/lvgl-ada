@@ -1,4 +1,3 @@
-with Interfaces.C.Strings;
 with Lv.Style;
 with System;
 
@@ -21,7 +20,7 @@ package Lv.Objx.Btnm is
    --  return Res_Inv if the button matrix is deleted else Res_Ok
    type Action_T is access function
      (Self : Instance;
-      Txt  : Interfaces.C.Strings.chars_ptr) return Res_T;
+      Txt  : C_String_Ptr) return Res_T;
    pragma Convention (C, Action_T);
 
    type Style_T is (Style_Bg,

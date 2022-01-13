@@ -1,4 +1,3 @@
-with Interfaces.C.Strings;
 with Lv.Style;
 
 package Lv.Objx.Checkbox is
@@ -25,7 +24,7 @@ package Lv.Objx.Checkbox is
    --  Set the text of a check box
    --  @param self pointer to a check box
    --  @param txt the text of the check box
-   procedure Set_Text (Self : Instance; Txt : Interfaces.C.Strings.chars_ptr);
+   procedure Set_Text (Self : Instance; Txt : C_String_Ptr);
 
    --  Set the state of the check box
    --  @param self pointer to a check box object
@@ -56,7 +55,7 @@ package Lv.Objx.Checkbox is
    --  Get the text of a check box
    --  @param self pointer to check box object
    --  @return pointer to the text of the check box
-   function Text (Self : Instance) return Interfaces.C.Strings.chars_ptr;
+   function Text (Self : Instance) return C_String_Ptr;
 
    --  Get the current state of the check box
    --  @param self pointer to a check box object

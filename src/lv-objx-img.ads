@@ -1,6 +1,5 @@
 with Interfaces.C;
 with System;
-with Interfaces.C.Strings;
 
 package Lv.Objx.Img is
 
@@ -47,7 +46,7 @@ package Lv.Objx.Img is
    --  @param self pointer to an image
    --  @return file name
    function File_Name
-     (Self : Instance) return Interfaces.C.Strings.chars_ptr;
+     (Self : Instance) return C_String_Ptr;
 
    --  Get the auto size enable attribute
    --  @param self pointer to an image

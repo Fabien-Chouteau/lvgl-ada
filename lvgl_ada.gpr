@@ -1,0 +1,35 @@
+with "config/lvgl_ada_config.gpr";
+
+project LVGL_Ada extends "scripts/lvgl.gpr" is
+
+   Extra_Source_Dirs := ();
+   case LVGL_Ada_Config.Pixel_Bit_Depth is
+      when "Pix_1bit"  =>
+         Extra_Source_Dirs := Extra_Source_Dirs & ("src/color_1");
+      when "Pix_8bit"  =>
+         Extra_Source_Dirs := Extra_Source_Dirs & ("src/color_8");
+      when "Pix_16bit" =>
+         Extra_Source_Dirs := Extra_Source_Dirs & ("src/color_16");
+      when "Pix_32bit" =>
+         Extra_Source_Dirs := Extra_Source_Dirs & ("src/color_32");
+   end case;
+
+   for Languages use ("Ada", "C");
+   for Source_Dirs use ("src", "config") & Extra_Source_Dirs;
+   for Object_Dir use "obj";
+   for Library_Dir use "lib";
+
+   for Library_Name use "lvgl_ada";
+   for Library_Version use Project'Library_Name & ".so." & lvgl_ada_Config.Crate_Version;
+
+   type Library_Type_Type is ("relocatable", "static", "static-pic");
+   Library_Type : Library_Type_Type :=
+     external ("BB_PICO_BSP_LIBRARY_TYPE", external ("LIBRARY_TYPE", "static"));
+   for Library_Kind use Library_Type;
+   for Create_Missing_Dirs use "True";
+
+   package Compiler is
+      for Switches ("C") use ("-DLV_CONF_INCLUDE_SIMPLE", "-O3");
+   end Compiler;
+
+end LVGL_Ada;

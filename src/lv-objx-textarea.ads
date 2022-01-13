@@ -1,7 +1,5 @@
 with Lv.Style;
 
-with Interfaces.C.Strings;
-
 with Lv.Objx.Page;
 with Lv.Objx.Label;
 
@@ -37,7 +35,7 @@ package Lv.Objx.Textarea is
    --  Insert a text to the current cursor position
    --  @param self pointer to a text area object
    --  @param txt a '\0' terminated string to insert
-   procedure Add_Text (Self : Instance; Txt : Interfaces.C.Strings.chars_ptr);
+   procedure Add_Text (Self : Instance; Txt : C_String_Ptr);
 
    --  Delete a the left character from the current cursor position
    --  @param self pointer to a text area object
@@ -50,7 +48,7 @@ package Lv.Objx.Textarea is
    --  Set the text of a text area
    --  @param self pointer to a text area
    --  @param txt pointer to the text
-   procedure Set_Text (Self : Instance; Txt : Interfaces.C.Strings.chars_ptr);
+   procedure Set_Text (Self : Instance; Txt : C_String_Ptr);
 
    --  Set the cursor position
    --  @param obj pointer to a text area object
@@ -86,7 +84,7 @@ package Lv.Objx.Textarea is
    --  @param list list of characters. Only the pointer is saved. E.g. "+-.,0123456789"
    procedure Set_Accepted_Chars
      (Self : Instance;
-      List : Interfaces.C.Strings.chars_ptr);
+      List : C_String_Ptr);
 
    --  Set max length of a Text Area.
    --  @param self pointer to  Text Area
@@ -119,7 +117,7 @@ package Lv.Objx.Textarea is
    --  Get the text of a text area. In password mode it gives the real text (not '*'s).
    --  @param self pointer to a text area object
    --  @return pointer to the text
-   function Text (Self : Instance) return Interfaces.C.Strings.chars_ptr;
+   function Text (Self : Instance) return C_String_Ptr;
 
    --  Get the label of a text area
    --  @param self pointer to a text area object
@@ -155,7 +153,7 @@ package Lv.Objx.Textarea is
    --  @param self pointer to  Text Area
    --  @return list of accented characters.
    function Accepted_Chars
-     (Self : Instance) return Interfaces.C.Strings.chars_ptr;
+     (Self : Instance) return C_String_Ptr;
 
    --  Set max length of a Text Area.
    --  @param self pointer to  Text Area

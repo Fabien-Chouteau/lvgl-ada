@@ -1,7 +1,0 @@
-project LVGL_Ada_16bit_Color extends "scripts/lvgl_ada_base.gpr" is
-
-   for Languages use ("Ada");
-   for Source_Dirs use ("src/color_16");
-   for Object_Dir use "obj_c16";
-
-end LVGL_Ada_16bit_Color;

@@ -1,6 +1,4 @@
-with System;
 with Lv.Area;
-with Interfaces.C.Strings;
 with Lv.Style;
 with Lv.Color; use Lv.Color;
 
@@ -90,7 +88,7 @@ package Lv.Objx is
    subtype Protect_T is Uint8_T;
 
    type Obj_Type_T_C_Type_Array is
-     array (0 .. 7) of Interfaces.C.Strings.chars_ptr;
+     array (0 .. 7) of C_String_Ptr;
    type Obj_Type_T is record
       C_Type : Obj_Type_T_C_Type_Array;
    end record;
