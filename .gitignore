@@ -1,7 +1,4 @@
-# Object file
-*.o
-
-# Ada Library Information
-*.ali
-
-tmp/
+/alire/
+/lib/
+/obj/
+/config/

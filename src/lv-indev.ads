@@ -1,6 +1,7 @@
 with Lv.Hal.Indev;
 with Lv.Objx;
 with Lv.Area;
+with Lv.Group;
 
 package Lv.Indev is
 
@@ -38,12 +39,11 @@ package Lv.Indev is
    procedure Set_Cursor (Indev   : Lv.Hal.Indev.Indev_T;
                          Cur_Obj : Lv.Objx.Obj_T);
 
---  FIXME: When Lv.Group is supported
---     --  Set a destination group for a keypad input device (for LV_INDEV_TYPE_KEYPAD)
---     --  @param indev pointer to an input device
---     --  @param group point to a group
---     procedure Set_Group (Indev : LV.HAL.Indev.Indev_T;
---                          Group : access lv_group_h.lv_group_t);  -- lv_indev.h:83
+   --  Set a destination group for a keypad input device (for LV_INDEV_TYPE_KEYPAD)
+   --  @param indev pointer to an input device
+   --  @param group point to a group
+   procedure Set_Group (Indev : LV.HAL.Indev.Indev_T;
+                        Group : LV.Group.Instance);
 
    --  Set the an array of points for LV_INDEV_TYPE_BUTTON.
    --  These points will be assigned to the buttons to press a specific point on the screen
@@ -100,8 +100,7 @@ package Lv.Indev is
    pragma Import (C, Reset_Lpr, "lv_indev_reset_lpr");
    pragma Import (C, Enable, "lv_indev_enable");
    pragma Import (C, Set_Cursor, "lv_indev_set_cursor");
---     FIXME: When Lv.Group is supported
---     pragma Import (C, Set_Group, "lv_indev_set_group");
+   pragma Import (C, Set_Group, "lv_indev_set_group");
    pragma Import (C, Set_Button_Points, "lv_indev_set_button_points");
    pragma Import (C, Get_Point, "lv_indev_get_point");
    pragma Import (C, Get_Key, "lv_indev_get_key");

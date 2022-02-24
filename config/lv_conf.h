@@ -53,7 +53,7 @@
  * VDB makes the double buffering, you don't need to deal with it!
  * Typical size: ~1/10 screen */
 #define LV_VDB_SIZE                                                            \
-  (80 * LV_HOR_RES) /*Size of VDB in pixel count (1/10 screen size is good for \
+  (Virtual_Display_Buffer_Size) /*Size of VDB in pixel count (1/10 screen size is good for \
                        first)*/
 #define LV_VDB_PX_BPP                                                          \
   LV_COLOR_SIZE /*Bit-per-pixel of VDB. Useful for monochrome or non-standard  \

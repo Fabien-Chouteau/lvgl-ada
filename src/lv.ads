@@ -24,6 +24,19 @@ package Lv is
    procedure Init;
    pragma Import (C, Init, "lv_init");
 
+   LV_KEY_UP        : constant := 17;
+   LV_KEY_DOWN      : constant := 18;
+   LV_KEY_RIGHT     : constant := 19;
+   LV_KEY_LEFT      : constant := 20;
+   LV_KEY_ESC       : constant := 27;
+   LV_KEY_DEL       : constant := 127;
+   LV_KEY_BACKSPACE : constant := 8;
+   LV_KEY_ENTER     : constant := 10;
+   LV_KEY_NEXT      : constant := 9;
+   LV_KEY_PREV      : constant := 11;
+   LV_KEY_HOME      : constant := 2;
+   LV_KEY_END       : constant := 3;
+
    subtype C is Character;
 
    SYMBOL_AUDIO       : constant String := C'Val (16#EF#) & C'Val (16#A0#) & C'Val (16#80#);

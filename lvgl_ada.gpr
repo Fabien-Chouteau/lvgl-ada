@@ -30,6 +30,7 @@ project LVGL_Ada extends "scripts/lvgl.gpr" is
 
    package Compiler is
       for Switches ("C") use ("-DLV_CONF_INCLUDE_SIMPLE", "-O3");
+      for Switches ("Ada") use ("-O3", "-gnatp");
    end Compiler;
 
 end LVGL_Ada;

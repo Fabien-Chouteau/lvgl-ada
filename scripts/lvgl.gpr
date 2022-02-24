@@ -14,5 +14,9 @@ project LVGL is
    for Object_Dir use "lvgl-obj";
    for Create_Missing_Dirs use "True";
 
+   package Compiler is
+      for Switches ("C") use ("-DLV_CONF_INCLUDE_SIMPLE", "-O3");
+   end Compiler;
+
 end LVGL;
 
