@@ -16,7 +16,7 @@
 
 /* Memory size which will be used by the library
  * to store the graphical objects and other data */
-#if Use_Builtin_Allocator == Use_Builtin_Allocator_True
+#if USE_BUILTIN_ALLOCATOR == USE_BUILTIN_ALLOCATOR_TRUE
 #define LV_MEM_CUSTOM                                                          \
   0 /*1: use custom malloc/free, 0: use the built-in                           \
        lv_mem_alloc/lv_mem_free*/
@@ -28,7 +28,7 @@
 
 #if LV_MEM_CUSTOM == 0
 #define LV_MEM_SIZE                                                            \
-  (Builtin_Allocator_Size)   /*Size memory used by `lv_mem_alloc` in bytes (>= \
+  (BUILTIN_ALLOCATOR_SIZE)   /*Size memory used by `lv_mem_alloc` in bytes (>= \
                                 2kB)*/
 #define LV_MEM_ATTR          /*Complier prefix for big array declaration*/
 #define LV_MEM_AUTO_DEFRAG 1 /*Automatically defrag on free*/
@@ -44,16 +44,16 @@
  *===================*/
 
 /* Horizontal and vertical resolution of the library.*/
-#define LV_HOR_RES (Horizontal_Resolution)
-#define LV_VER_RES (Vertical_Resolution)
-#define LV_DPI (Density_Per_Inch)
+#define LV_HOR_RES (HORIZONTAL_RESOLUTION)
+#define LV_VER_RES (VERTICAL_RESOLUTION)
+#define LV_DPI (DENSITY_PER_INCH)
 
 /* Size of VDB (Virtual Display Buffer: the internal graphics buffer).
  * Required for buffered drawing, opacity and anti-aliasing
  * VDB makes the double buffering, you don't need to deal with it!
  * Typical size: ~1/10 screen */
 #define LV_VDB_SIZE                                                            \
-  (Virtual_Display_Buffer_Size) /*Size of VDB in pixel count (1/10 screen size is good for \
+  (VIRTUAL_DISPLAY_BUFFER_SIZE) /*Size of VDB in pixel count (1/10 screen size is good for \
                        first)*/
 #define LV_VDB_PX_BPP                                                          \
   LV_COLOR_SIZE /*Bit-per-pixel of VDB. Useful for monochrome or non-standard  \
@@ -68,7 +68,7 @@
  * (optional) The flushing should use DMA to write the frame buffer in the
  * background*/
 
-#if Double_Buffering == Double_Buffering_True
+#if DOUBLE_BUFFERING == DOUBLE_BUFFERING_TRUE
 #define LV_VDB_DOUBLE 1 /*1: Enable the use of 2 VDBs*/
 #else
 #define LV_VDB_DOUBLE 0 /*1: Enable the use of 2 VDBs*/
@@ -97,13 +97,13 @@
 /*Color settings*/
 
 /*Color depth: 1/8/16/32*/
-#if Pixel_Bit_Depth == Pixel_Bit_Depth_Pix_1bit
+#if PIXEL_BIT_DEPTH == PIXEL_BIT_DEPTH_PIX_1BIT
 #define LV_COLOR_DEPTH     1
-#elif Pixel_Bit_Depth == Pixel_Bit_Depth_Pix_8bit
+#elif PIXEL_BIT_DEPTH == PIXEL_BIT_DEPTH_PIX_8BIT
 #define LV_COLOR_DEPTH     8
-#elif Pixel_Bit_Depth == Pixel_Bit_Depth_Pix_16bit
+#elif PIXEL_BIT_DEPTH == PIXEL_BIT_DEPTH_PIX_16BIT
 #define LV_COLOR_DEPTH     16
-#elif Pixel_Bit_Depth == Pixel_Bit_Depth_Pix_32bit
+#elif PIXEL_BIT_DEPTH == PIXEL_BIT_DEPTH_PIX_32BIT
 #define LV_COLOR_DEPTH     32
 #else
 #error "Invalid Pixel_Bit_Depth"
@@ -112,7 +112,7 @@
 /* Swap the 2 bytes of RGB565 color. Useful if the display has a 8 bit interface
  * (e.g. SPI)
  */
-#if Color_16_SWAP == Color_16_SWAP_True
+#if COLOR_16_SWAP == COLOR_16_SWAP_TRUE
 #define LV_COLOR_16_SWAP   1
 #else
 #define LV_COLOR_16_SWAP   0
@@ -156,20 +156,20 @@
  * LV_LOG_LEVEL_WARN        Log if something unwanted happened but didn't caused problem
  * LV_LOG_LEVEL_ERROR       Only critical issue, when the system may fail
  */
-#if Log_Level == Log_Level_Trace
+#if LOG_LEVEL == LOG_LEVEL_TRACE
 #define LV_LOG_LEVEL    LV_LOG_LEVEL_TRACE
-#elif Log_Level == Log_Level_Info
+#elif LOG_LEVEL == LOG_LEVEL_INFO
 #define LV_LOG_LEVEL    LV_LOG_LEVEL_INFO
-#elif Log_Level == Log_Level_Warn
+#elif LOG_LEVEL == LOG_LEVEL_WARN
 #define LV_LOG_LEVEL    LV_LOG_LEVEL_WARN
-#elif Log_Level == Log_Level_Error
+#elif LOG_LEVEL == LOG_LEVEL_ERROR
 #define LV_LOG_LEVEL    LV_LOG_LEVEL_ERROR
 #else
 #error "Invalid Log_Level"
 #endif
 /* 1: Print the log with 'printf'; 0: user need to register a callback*/
 
-#if Log_With_Printf == Log_With_Printf_True
+#if LOG_WITH_PRINTF == LOG_WITH_PRINTF_TRUE
 #define LV_LOG_PRINTF   1
 #endif
 #endif  /*USE_LV_LOG*/
@@ -177,7 +177,7 @@
 /*================
  *  THEME USAGE
  *================*/
-#if Theme_Live_Update == Theme_Live_Update_True
+#if THEME_LIVE_UPDATE == THEME_LIVE_UPDATE_TRUE
 #define LV_THEME_LIVE_UPDATE    1       /*1: Allow theme switching at run time. Uses 8..10 kB of RAM*/
 #endif
 

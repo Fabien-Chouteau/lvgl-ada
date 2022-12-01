@@ -1,6 +1,6 @@
 with "config/lvgl_ada_config.gpr";
 
-project LVGL_Ada extends "scripts/lvgl.gpr" is
+project LVGL_Ada is
 
    Extra_Source_Dirs := ();
    case LVGL_Ada_Config.Pixel_Bit_Depth is
@@ -15,7 +15,18 @@ project LVGL_Ada extends "scripts/lvgl.gpr" is
    end case;
 
    for Languages use ("Ada", "C");
-   for Source_Dirs use ("src", "config") & Extra_Source_Dirs;
+   for Source_Dirs use ("src",
+                        "config",
+                        "lvgl/lv_core",
+                        "lvgl/lv_draw",
+                        "lvgl/lv_fonts",
+                        "lvgl/lv_hal",
+                        "lvgl/lv_misc",
+                        "lvgl/lv_objx",
+                        "lvgl/lv_themes",
+                        "lvgl/")
+                        & Extra_Source_Dirs;
+
    for Object_Dir use "obj";
    for Library_Dir use "lib";
 
@@ -29,8 +40,14 @@ project LVGL_Ada extends "scripts/lvgl.gpr" is
    for Create_Missing_Dirs use "True";
 
    package Compiler is
-      for Switches ("C") use ("-DLV_CONF_INCLUDE_SIMPLE", "-O3");
-      for Switches ("Ada") use ("-O3", "-gnatp");
+      for Switches ("Ada") use Lvgl_Ada_Config.Ada_Compiler_Switches;
+
+      case Lvgl_Ada_Config.Build_Profile is
+         when "development" =>
+            for Switches ("C") use ("-DLV_CONF_INCLUDE_SIMPLE", "-Og", "-g");
+         when others =>
+            for Switches ("C") use ("-DLV_CONF_INCLUDE_SIMPLE", "-O3", "-g");
+      end case;
    end Compiler;
 
 end LVGL_Ada;
