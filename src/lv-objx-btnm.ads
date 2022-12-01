@@ -52,7 +52,7 @@ package Lv.Objx.Btnm is
    --              - bit 3: hidden
    --              - bit 2..0: button relative width
    --              Example (practically use octal numbers): "\224abc": "abc" text with 4 width and no long press
-   procedure Set_Map (Self : Instance; Map : access constant String_Array);
+   procedure Set_Map (Self : Instance; Map : String_Array_Ptr);
 
    --  Set a new callback function for the buttons (It will be called when a button is released)
    --  @param self: pointer to button matrix object

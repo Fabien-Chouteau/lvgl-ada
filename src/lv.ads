@@ -20,6 +20,7 @@ package Lv is
    type String_Array is array (Natural range <>) of C_String_Ptr
      with Convention => C;
 
+   type String_Array_Ptr is private;
    --  Init. the 'lv' library.
    procedure Init;
    pragma Import (C, Init, "lv_init");
@@ -89,4 +90,9 @@ package Lv is
    SYMBOL_BATTERY_1   : constant String := C'Val (16#EF#) & C'Val (16#A0#) & C'Val (16#AF#);
    SYMBOL_BATTERY_EMP : constant String := C'Val (16#EF#) & C'Val (16#A0#) & C'Val (16#B0#);
    SYMBOL_BLUETOOTH   : constant String := C'Val (16#EF#) & C'Val (16#A0#) & C'Val (16#B1#);
+
+private
+
+   type String_Array_Ptr is new System.Address;
+
 end Lv;

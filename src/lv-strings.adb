@@ -1,3 +1,4 @@
+with System;
 with Lv.Mem;
 
 package body Lv.Strings is
@@ -32,5 +33,20 @@ package body Lv.Strings is
       Lv.Mem.Free (Ptr);
       Ptr := System.Null_Address;
    end Free;
+
+   -------------------------
+   -- To_String_Array_Ptr --
+   -------------------------
+
+   function To_String_Array_Ptr (Arr : access constant String_Array)
+                                 return String_Array_Ptr
+   is
+   begin
+      if Arr'Length = 0 then
+         return String_Array_Ptr (System.Null_Address);
+      else
+         return String_Array_Ptr (Arr (Arr'First)'Address);
+      end if;
+   end To_String_Array_Ptr;
 
 end Lv.Strings;

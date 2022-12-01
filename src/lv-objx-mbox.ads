@@ -27,7 +27,7 @@ package Lv.Objx.Mbox is
    --  @param action a function which will be called when a button is released
    procedure Add_Btns
      (Self    : Instance;
-      Btn_Map : System.Address;
+      Btn_Map : String_Array_Ptr;
       Action  : Lv.Objx.Btnm.Action_T);
 
    ----------------------
