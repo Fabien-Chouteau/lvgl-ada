@@ -2,7 +2,9 @@ with System;
 with Interfaces.C; use Interfaces.C;
 with Interfaces;
 
-package Lv is
+package Lv
+with Elaborate_Body
+is
 
    subtype Int8_T is Interfaces.Integer_8;
    subtype Uint8_T is Interfaces.Unsigned_8;
@@ -21,9 +23,6 @@ package Lv is
      with Convention => C;
 
    type String_Array_Ptr is private;
-   --  Init. the 'lv' library.
-   procedure Init;
-   pragma Import (C, Init, "lv_init");
 
    LV_KEY_UP        : constant := 17;
    LV_KEY_DOWN      : constant := 18;
