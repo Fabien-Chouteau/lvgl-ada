@@ -227,7 +227,21 @@
  */
 #define LV_FONT_CUSTOM_DECLARE
 
-#define LV_FONT_DEFAULT        &lv_font_dejavu_10     /*Always set a default font from the built-in fonts*/
+/*Always set a default font from the built-in fonts*/
+
+#if DEFAULT_FONT == DEFAULT_FONT_DEJAVU_10
+# define LV_FONT_DEFAULT        &lv_font_dejavu_10
+#elif DEFAULT_FONT == DEFAULT_FONT_DEJAVU_20
+# define LV_FONT_DEFAULT        &lv_font_dejavu_20
+#elif DEFAULT_FONT == DEFAULT_FONT_DEJAVU_30
+# define LV_FONT_DEFAULT        &lv_font_dejavu_30
+#elif DEFAULT_FONT == DEFAULT_FONT_DEJAVU_40
+# define LV_FONT_DEFAULT        &lv_font_dejavu_40
+#elif DEFAULT_FONT == DEFAULT_FONT_MONOSPACE_8
+# define LV_FONT_DEFAULT        &lv_font_monospace_8
+#else
+#error "Invalid Default font"
+#endif
 
 /*===================
  *  LV_OBJ SETTINGS

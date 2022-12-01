@@ -20,3 +20,4 @@ Log_With_Printf             = {type = "Boolean", default = false}
 Theme_Live_Update           = {type = "Boolean", default = false}
 Virtual_Display_Buffer_Size = {type = "Integer", first = 1, last = 1000000, default = 10240}
 Double_Buffering            = {type = "Boolean", default = false}
+Default_Font                = {type = "Enum", values = ["dejavu_10", "dejavu_20", "dejavu_30", "dejavu_40", "monospace_8"], default = "dejavu_20"}
