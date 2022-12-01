@@ -337,6 +337,10 @@
 #define LV_PRELOAD_DEF_SPIN_TIME    1000    /*[ms]*/
 #endif
 
+/*Canvas (dependencies: -)*/
+#define USE_LV_CANVAS      1
+
+
 /*************************
  * User input objects
  *************************/
