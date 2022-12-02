@@ -1,6 +1,6 @@
 name = "lvgl_ada"
 description = "Bindings for the LVGL embedded GUI framework"
-version = "0.2.0"
+version = "1.0.0-dev"
 licenses = "MIT"
 maintainers = ["fabien.chouteau@gmail.com"]
 maintainers-logins = ["Fabien-Chouteau"]
