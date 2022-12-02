@@ -4,6 +4,8 @@ version = "1.0.0-dev"
 licenses = "MIT"
 maintainers = ["fabien.chouteau@gmail.com"]
 maintainers-logins = ["Fabien-Chouteau"]
+authors = ["Fabien Chouteau <fabien.chouteau@gmail.com>"]
+
 website = "https://github.com/Fabien-Chouteau/lvgl-ada"
 tags = ["embedded", "gui", "lvgl", "no-std"]
 
