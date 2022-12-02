@@ -56,7 +56,7 @@ package Lv.Objx.Slider is
    procedure Set_Style
      (Self   : Instance;
       Type_P : Style_T;
-      Style  : access Lv.Style.Style);
+      Style  : Lv.Style.Style);
 
    ----------------------
    -- Getter functions --
@@ -99,7 +99,7 @@ package Lv.Objx.Slider is
    --  @return style pointer to a style
    function Style
      (Self   : Instance;
-      Type_P : Style_T) return access Lv.Style.Style;
+      Type_P : Style_T) return Lv.Style.Style;
 
    -------------
    -- Imports --

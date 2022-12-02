@@ -31,7 +31,7 @@ package Lv.Objx.Img is
    --  @param style pointer to a style
    procedure Set_Style
      (Self  : Instance;
-      Style : access Lv.Style.Style);
+      Style : Lv.Style.Style);
 
    ----------------------
    -- Getter functions --
@@ -57,7 +57,7 @@ package Lv.Objx.Img is
    --  @param self pointer to an image object
    --  @return pointer to the image's style
    function Style
-     (Self : Instance) return access Lv.Style.Style;
+     (Self : Instance) return Lv.Style.Style;
 
    -------------
    -- Imports --

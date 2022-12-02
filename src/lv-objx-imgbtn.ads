@@ -60,7 +60,7 @@ package Lv.Objx.Imgbtn is
    procedure Set_Style
      (Self   : Instance;
       Type_P : style_t;
-      Style  : access LV.Style.Style);
+      Style  : LV.Style.Style);
 
    ----------------------
    -- Getter functions --
@@ -91,7 +91,7 @@ package Lv.Objx.Imgbtn is
    --  @param imgbtn pointer to image button object
    --  @param type which style should be get
    --  @return style pointer to the style
-   function Style (Self : Instance; Type_P : Style_T) return access Lv.Style.Style;
+   function Style (Self : Instance; Type_P : Style_T) return Lv.Style.Style;
 
    -------------
    -- Imports --

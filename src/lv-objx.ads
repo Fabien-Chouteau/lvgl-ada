@@ -203,7 +203,7 @@ package Lv.Objx is
    --  Set a new style for an object
    --  @param self pointer to an object
    --  @param style_p pointer to the new style
-   procedure Set_Style (Self : Obj_T; Style_P : access Lv.Style.Style);
+   procedure Set_Style (Self : Obj_T; Style_P : Lv.Style.Style);
 
    --  Notify an object about its style is modified
    --  @param obj pointer to an object
@@ -212,7 +212,7 @@ package Lv.Objx is
    --  Notify all object if a style is modified
    --  @param style pointer to a style. Only the objects with this style will be notified
    --                (NULL to notify all objects)
-   procedure Report_Style_Mod (Style_P : access Lv.Style.Style);
+   procedure Report_Style_Mod (Style_P : Lv.Style.Style);
 
    -------------------
    -- Attribute set --

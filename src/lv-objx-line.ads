@@ -40,7 +40,7 @@ package Lv.Objx.Line is
    --  Set the style of a line
    --  @param self pointer to a line object
    --  @param style pointer to a style
-   procedure Set_Style (Self : Instance; Style : access Lv.Style.Style);
+   procedure Set_Style (Self : Instance; Style : Lv.Style.Style);
 
    ----------------------
    -- Getter functions --
@@ -59,7 +59,7 @@ package Lv.Objx.Line is
    --  Get the style of an line object
    --  @param self pointer to an line object
    --  @return pointer to the line's style
-   function Style (Self : Instance) return access Lv.Style.Style;
+   function Style (Self : Instance) return Lv.Style.Style;
 
    -------------
    -- Imports --

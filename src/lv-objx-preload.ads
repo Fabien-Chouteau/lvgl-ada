@@ -36,7 +36,7 @@ package Lv.Objx.Preload is
    procedure Set_Style
      (Self   : Instance;
       Type_P : Style_T;
-      Style  : access Lv.Style.Style);
+      Style  : Lv.Style.Style);
 
    ----------------------
    -- Getter functions --
@@ -56,7 +56,7 @@ package Lv.Objx.Preload is
    --  @return style pointer to the style
    function Get_Style
      (Self   : Instance;
-      Type_P : Style_T) return access Lv.Style.Style;
+      Type_P : Style_T) return Lv.Style.Style;
 
    ---------------------
    -- Other functions --

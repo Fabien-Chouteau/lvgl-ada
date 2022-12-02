@@ -38,9 +38,9 @@ package Lv.Objx.Bar is
    --  @param type which style should be set
    --  @param style pointer to a style
    procedure Set_Style
-     (Self : Instance;
-      Arg2 : Style_T;
-      Arg3 : Lv.Style.Style);
+     (Self   : Instance;
+      Type_P : Style_T;
+      Style  : Lv.Style.Style);
 
    ----------------------
    -- Getter functions --

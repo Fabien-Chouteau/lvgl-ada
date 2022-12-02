@@ -29,7 +29,7 @@ package Lv.Objx.Arc is
    procedure Set_Style
      (Self   : Instance;
       Type_P : Style_T;
-      Style  : access Lv.Style.Style);
+      Style  : Lv.Style.Style);
 
    ----------------------
    -- Getter functions --
@@ -51,7 +51,7 @@ package Lv.Objx.Arc is
    -- @return style pointer to the style
    function Style
      (Self : Instance;
-      Arg2 : Style_T) return access Lv.Style.Style;
+      Arg2 : Style_T) return Lv.Style.Style;
 
    -------------
    -- Imports --

@@ -63,7 +63,7 @@ package Lv.Objx.Ddlist is
    procedure Set_Style
      (Self   : Instance;
       Type_P : Style_T;
-      Style  : access Lv.Style.Style);
+      Style  : Lv.Style.Style);
 
    ----------------------
    -- Getter functions --
@@ -113,7 +113,7 @@ package Lv.Objx.Ddlist is
    --  @return style pointer to a style
    function Style
      (Self  : Instance;
-      Style : Style_T) return access Lv.Style.Style;
+      Style : Style_T) return Lv.Style.Style;
 
    ---------------------
    -- Other functions --

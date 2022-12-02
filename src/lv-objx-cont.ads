@@ -43,7 +43,7 @@ package Lv.Objx.Cont is
    --  Set the style of a container
    --  @param self pointer to a container object
    --  @param style pointer to the new style
-   procedure Set_Style (Self : Instance; Style : access Lv.Style.Style);
+   procedure Set_Style (Self : Instance; Style : Lv.Style.Style);
 
    ----------------------
    -- Getter functions --
@@ -77,7 +77,7 @@ package Lv.Objx.Cont is
    --  Get the style of a container
    --  @param self pointer to a container object
    --  @return pointer to the container's style
-   function Style (Self : Instance) return access Lv.Style.Style;
+   function Style (Self : Instance) return Lv.Style.Style;
 
    -------------
    -- Imports --

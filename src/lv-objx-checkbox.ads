@@ -46,7 +46,7 @@ package Lv.Objx.Checkbox is
    procedure Set_Style
      (Self   : Instance;
       Type_P : Style_T;
-      Style  : access Lv.Style.Style);
+      Style  : Lv.Style.Style);
 
    ----------------------
    -- Getter functions --
@@ -73,7 +73,7 @@ package Lv.Objx.Checkbox is
    --  @return style pointer to the style
    function Style
      (Self   : Instance;
-      Type_P : Style_T) return access Lv.Style.Style;
+      Type_P : Style_T) return Lv.Style.Style;
 
    -------------
    -- Imports --

@@ -34,7 +34,7 @@ package Lv.Objx.Lmeter is
    --  Set the styles of a line meter
    --  @param self pointer to a line meter object
    --  @param bg set the style of the line meter
-   procedure Set_Style (Self : Instance; Style : access Lv.Style.Style);
+   procedure Set_Style (Self : Instance; Style : Lv.Style.Style);
 
    ----------------------
    -- Getter functions --
@@ -68,7 +68,7 @@ package Lv.Objx.Lmeter is
    --  Get the style of a line meter
    --  @param self pointer to a line meter object
    --  @return pointer to the line meter's style
-   function Style (Self : Instance) return access Lv.Style.Style;
+   function Style (Self : Instance) return Lv.Style.Style;
 
    -------------
    -- Imports --

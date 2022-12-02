@@ -37,9 +37,9 @@ package Lv.Objx.Switch is
    --  @param type which style should be set
    --  @param style pointer to a style
    procedure Set_Style
-     (Self : Instance;
-      Arg2 : Style_T;
-      Arg3 : access Lv.Style.Style);
+     (Self   : Instance;
+      Type_P : Style_T;
+      Style  : Lv.Style.Style);
 
    ----------------------
    -- Getter functions --
@@ -61,7 +61,7 @@ package Lv.Objx.Switch is
    --  @return style pointer to a style
    function Style
      (Self : Instance;
-      Arg2 : Style_T) return access Lv.Style.Style;
+      Arg2 : Style_T) return Lv.Style.Style;
 
    -------------
    -- Imports --

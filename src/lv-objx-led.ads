@@ -36,7 +36,7 @@ package Lv.Objx.Led is
    --  Set the style of a led
    --  @param self pointer to a led object
    --  @param style pointer to a style
-   procedure Set_Style (Self : Instance; Style : access Lv.Style.Style);
+   procedure Set_Style (Self : Instance; Style : Lv.Style.Style);
 
    ----------------------
    -- Getter functions --
@@ -50,7 +50,7 @@ package Lv.Objx.Led is
    --  Get the style of an led object
    --  @param self pointer to an led object
    --  @return pointer to the led's style
-   function Style (Self : Instance) return access Lv.Style.Style;
+   function Style (Self : Instance) return Lv.Style.Style;
 
    -------------
    -- Imports --

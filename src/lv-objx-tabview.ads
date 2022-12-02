@@ -75,7 +75,7 @@ package Lv.Objx.Tabview is
    procedure Set_Style
      (Self  : Instance;
       Typ   : Style_T;
-      Style : access Lv.Style.Style);
+      Style : Lv.Style.Style);
 
    --  Set the position of tab select buttons
    --  @param self pointer to a tan view object
@@ -124,7 +124,7 @@ package Lv.Objx.Tabview is
    --  @return style pointer to a style
    function Style
      (Self       : Instance;
-      Style_Type : Style_T) return access Lv.Style.Style;
+      Style_Type : Style_T) return Lv.Style.Style;
 
    --  Get position of tab select buttons
    --  @param self pointer to a ab view object

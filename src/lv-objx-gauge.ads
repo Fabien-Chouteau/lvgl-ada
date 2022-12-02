@@ -56,7 +56,7 @@ package Lv.Objx.Gauge is
    --  Set the styles of a gauge
    --  @param self pointer to a gauge object
    --  @param bg set the style of the gauge
-   procedure Set_Style (Self : Instance; Bg : access Lv.Style.Style);
+   procedure Set_Style (Self : Instance; Bg : Lv.Style.Style);
 
    ----------------------
    -- Getter functions --
@@ -106,7 +106,7 @@ package Lv.Objx.Gauge is
    --  Get the style of a gauge
    --  @param self pointer to a gauge object
    --  @return pointer to the gauge's style
-   function Style (Self : Instance) return access Lv.Style.Style;
+   function Style (Self : Instance) return Lv.Style.Style;
 
    -------------
    -- Imports --
