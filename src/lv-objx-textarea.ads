@@ -17,8 +17,8 @@ package Lv.Objx.Textarea is
                           Cursor_Hidden);
 
    type Style_T is (Style_Bg,
-                       Style_Sb,
-                       Style_Cursor);
+                    Style_Sb,
+                    Style_Cursor);
 
    --  Create a text area objects
    --  @param par pointer to an object, it will be the parent of the new text area

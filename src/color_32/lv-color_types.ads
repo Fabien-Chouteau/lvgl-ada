@@ -1,3 +1,5 @@
+with System; use System;
+
 package Lv.Color_Types is
 
    type Color_T_Comp is record
@@ -24,8 +26,10 @@ package Lv.Color_Types is
    pragma Unchecked_Union (Color_T);
 
    function Color_Make
-     (R8, G8, B8 : Uint8_T) return Color_T is
-     (Discr => 0, Comp => (B8, G8, R8, 16#ff#))
+     (R8, G8, B8 : Uint8_T) return Color_T
+   is (if System.Default_Bit_Order = System.Low_Order_First
+       then (Discr => 0, Comp => (R8, G8, B8, 16#ff#))
+       else (Discr => 0, Comp => (B8, G8, R8, 16#ff#)))
    with Inline_Always;
 
 end Lv.Color_Types;

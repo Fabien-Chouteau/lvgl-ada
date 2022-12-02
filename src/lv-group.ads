@@ -42,6 +42,4 @@ private
    pragma Import (C, Focus_Freeze, "lv_group_focus_freeze");
    pragma Import (C, Send_Data, "lv_group_send_data");
 
-
-
 end Lv.Group;

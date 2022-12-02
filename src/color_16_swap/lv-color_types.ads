@@ -8,9 +8,10 @@ with Lvgl_Ada_Config;
 package Lv.Color_Types is
 
    type Color_T_Comp is record
-      Blue  : Extensions.Unsigned_5;
-      Green : Extensions.Unsigned_6;
-      Red   : Extensions.Unsigned_5;
+      Green_H : Extensions.Unsigned_3;
+      Red     : Extensions.Unsigned_5;
+      Blue    : Extensions.Unsigned_5;
+      Green_L : Extensions.Unsigned_3;
    end record
      with Pack, Object_Size => 16;
    pragma Convention (C_Pass_By_Copy, Color_T_Comp);
@@ -31,16 +32,10 @@ package Lv.Color_Types is
 
    function Color_Make (R8, G8, B8 : Uint8_T) return Color_T
    is (Discr => 0,
-       Comp => (if System.Default_Bit_Order = System.Low_Order_First
-                then
-                  (Extensions.Unsigned_5 (Shift_Right (R8, 3)),
-                   Extensions.Unsigned_6 (Shift_Right (G8, 2)),
-                   Extensions.Unsigned_5 (Shift_Right (B8, 3)))
-                else
-                  (Extensions.Unsigned_5 (Shift_Right (B8, 3)),
-                   Extensions.Unsigned_6 (Shift_Right (G8, 2)),
-                   Extensions.Unsigned_5 (Shift_Right (R8, 3)))
-               )
+       Comp => (Extensions.Unsigned_3 (Shift_Right (G8, 5)),
+                Extensions.Unsigned_5 (Shift_Right (R8, 3)),
+                Extensions.Unsigned_5 (Shift_Right (B8, 3)),
+                Extensions.Unsigned_3 (Shift_Right (G8, 2) and 16#7#))
       )
    with Inline_Always;
 

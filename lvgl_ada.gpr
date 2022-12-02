@@ -9,7 +9,12 @@ project LVGL_Ada is
       when "Pix_8bit"  =>
          Extra_Source_Dirs := Extra_Source_Dirs & ("src/color_8");
       when "Pix_16bit" =>
-         Extra_Source_Dirs := Extra_Source_Dirs & ("src/color_16");
+         case LVGL_Ada_Config.Color_16_SWAP is
+            when "True" =>
+               Extra_Source_Dirs := Extra_Source_Dirs & ("src/color_16_swap");
+            when others =>
+               Extra_Source_Dirs := Extra_Source_Dirs & ("src/color_16");
+         end case;
       when "Pix_32bit" =>
          Extra_Source_Dirs := Extra_Source_Dirs & ("src/color_32");
    end case;
